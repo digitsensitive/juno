@@ -1,11 +1,11 @@
 /**
  * @author       Digitsensitive <digit.sensitivee@gmail.com>
  * @copyright    2018 Digitsensitive
- * @description  Juno Class
+ * @description  Game Class
  * @license      Digitsensitive
  */
 
-export class Juno {
+export class Game {
   private canvas: HTMLCanvasElement;
 
   constructor(config: any) {

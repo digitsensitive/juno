@@ -1,1 +1,1 @@
-export { Juno } from "./Juno";
+export { Game } from "./Game";
