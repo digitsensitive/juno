@@ -12,6 +12,12 @@
     "Games"
   ],
   "main": "index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^2.5.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/digitsensitive/juno-console.git"

@@ -1,14 +1,14 @@
 /**
  * @author       Digitsensitive <digit.sensitivee@gmail.com>
  * @copyright    2018 Digitsensitive
- * @description  NEWGAME
+ * @description  Juno Class
  * @license      Digitsensitive
  */
 
 export class Juno {
   private canvas: HTMLCanvasElement;
 
-  constructor(config) {
+  constructor(config: any) {
     let canvas = document.createElement("canvas");
     let ctx = canvas.getContext("2d");
     canvas.width = config.width || 64;
