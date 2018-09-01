@@ -1,10 +1,10 @@
 /**
  * @author       Digitsensitive <digit.sensitivee@gmail.com>
  * @copyright    2018 Digitsensitive
- * @description  Juno Class
+ * @description  Game Class
  * @license      Digitsensitive
  */
-export declare class Juno {
+export declare class Game {
     private canvas;
     constructor(config: any);
 }

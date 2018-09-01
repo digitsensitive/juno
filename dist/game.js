@@ -2,12 +2,12 @@
 /**
  * @author       Digitsensitive <digit.sensitivee@gmail.com>
  * @copyright    2018 Digitsensitive
- * @description  Juno Class
+ * @description  Game Class
  * @license      Digitsensitive
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var Juno = /** @class */ (function () {
-    function Juno(config) {
+var Game = /** @class */ (function () {
+    function Game(config) {
         var canvas = document.createElement("canvas");
         var ctx = canvas.getContext("2d");
         canvas.width = config.width || 64;
@@ -15,6 +15,6 @@ var Juno = /** @class */ (function () {
         this.canvas = canvas;
         document.body.appendChild(canvas);
     }
-    return Juno;
+    return Game;
 }());
-exports.Juno = Juno;
+exports.Game = Game;
