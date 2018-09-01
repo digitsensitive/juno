@@ -1,0 +1,25 @@
+{
+  "name": "juno-console",
+  "version": "0.0.1",
+  "description": "Juno is a fantasy console for making, playing and sharing tiny games. ",
+  "keywords": [
+    "Juno",
+    "Fantasy console",
+    "Fantasy computer",
+    "TypeScript",
+    "Javascript",
+    "HTML5",
+    "Games"
+  ],
+  "main": "index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digitsensitive/juno-console.git"
+  },
+  "author": {
+    "name": "digitsensitive",
+    "email": "digit.sensitivee@gmail.com"
+  },
+  "license": "MIT",
+  "private": false
+}
