@@ -6,5 +6,10 @@
  */
 export declare class Game {
     private canvas;
+    private context;
+    private scaleFactor;
     constructor(config: any);
+    pix(x: number, y: number): void;
+    spr(nr: number, x: number, y: number): void;
+    draw(): void;
 }
