@@ -1,6 +1,6 @@
 {
   "name": "juno-console",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Juno is a fantasy console for making, playing and sharing tiny games. ",
   "keywords": [
     "Juno",
@@ -15,6 +15,11 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc"
+  },
+  "dependencies": {
+    "animation-frame": "^0.3.0",
+    "eventemitter3": "^3.1.0",
+    "performance-now": "^2.1.0"
   },
   "devDependencies": {
     "typescript": "^2.5.3"
