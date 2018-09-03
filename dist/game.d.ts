@@ -4,12 +4,21 @@
  * @description  Game Class
  * @license      Digitsensitive
  */
-export declare class Game {
+import { EventEmitter } from "../node_modules/eventemitter3";
+export declare class Game extends EventEmitter {
     private canvas;
-    private context;
+    private renderer;
     private scaleFactor;
+    private paused;
+    private fps;
+    private step;
+    private last;
+    private time;
+    private accumulator;
     constructor(config: any);
+    start(state: any): void;
+    private frame;
+    update(interval: number, time: number): void;
+    draw(renderer: number, frameState: number): void;
     pix(x: number, y: number): void;
-    spr(nr: number, x: number, y: number): void;
-    draw(): void;
 }
