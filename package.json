@@ -1,6 +1,6 @@
 {
   "name": "juno-console",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "Juno is a clean and lightweight 2D game framework written in TypeScript for making HTML5 Games. ",
   "keywords": [
     "Juno",
