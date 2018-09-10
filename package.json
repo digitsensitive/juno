@@ -1,9 +1,11 @@
 {
   "name": "juno-console",
   "version": "0.0.24",
-  "description": "Juno is a fantasy console for making, playing and sharing tiny games. ",
+  "description": "Juno is a clean and lightweight 2D game framework written in TypeScript for making HTML5 Games. ",
   "keywords": [
     "Juno",
+    "2D game framework",
+    "Game framework",
     "Fantasy console",
     "Fantasy computer",
     "TypeScript",
