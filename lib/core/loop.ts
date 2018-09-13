@@ -1,7 +1,7 @@
 /**
  * @author       Digitsensitive <digit.sensitivee@gmail.com>
  * @copyright    2018 Digitsensitive
- * @description  Juno: Game Loop
+ * @description  Juno Core: Game Loop
  *
  * This is the core game loop of the juno html5 game framework.
  * Juno uses a fixed update time step with a variable rendering. This
@@ -24,8 +24,8 @@
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
 
-import { EventEmitter } from "../node_modules/eventemitter3";
-import { ElapsedTime } from "./polyfills/performance.now";
+import { EventEmitter } from "../../node_modules/eventemitter3";
+import { ElapsedTime } from "../polyfills/performance.now";
 
 export class GameLoop extends EventEmitter {
   private accumulator: number;
@@ -46,6 +46,7 @@ export class GameLoop extends EventEmitter {
    * @param state [name of the state to start]
    */
   public start(state: string): void {
+    this.init();
     this.paused = false;
     this.currentTime = ElapsedTime();
     this.accumulator = 0;
@@ -74,6 +75,13 @@ export class GameLoop extends EventEmitter {
       this.render(this.accumulator / this.step);
       requestAnimationFrame(this.frame.bind(this));
     }
+  }
+
+  /**
+   * Init the game
+   */
+  private init(): void {
+    this.emit("init");
   }
 
   /**

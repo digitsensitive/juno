@@ -9,7 +9,9 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(require("./game"));
-__export(require("./loop"));
-__export(require("./api"));
+// juno core
+__export(require("./core/game"));
+__export(require("./core/api"));
+__export(require("./core/state"));
+// juno polyfills
 __export(require("./polyfills/performance.now"));

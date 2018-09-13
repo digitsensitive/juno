@@ -1,7 +1,7 @@
 /**
  * @author       Digitsensitive <digit.sensitivee@gmail.com>
  * @copyright    2018 Digitsensitive
- * @description  Juno: Game Class
+ * @description  Juno Core: Game Class
  *
  * This is the core game class of Juno.
  * It initialize the canvas, the renderer and the game loop.
@@ -16,27 +16,23 @@
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
 import { API } from "./api";
-export interface IGameConfig {
-    name: string;
-    scale: number;
-    width?: number;
-    height?: number;
-}
+import { IGameConfig } from "../interfaces/game-config.interface";
+import { IState } from "../interfaces/state.interface";
 export declare class Game {
-    isJunoRunning(): void;
     private canvas;
     private renderer;
     private scaleFactor;
     api: API;
     private gameLoop;
-    private gameStates;
+    private states;
+    private inputs;
     constructor(config: IGameConfig);
-    /**
-     * This function starts the game.
+    /********************************************************************
+     * This function adds a game state.
      * You have to define a name for the state and
-     * send the reference to the current game state.
-     * @param name      [the name of the game state]
-     * @param state     [the reference to the game state]
-     */
-    startGame(name: string, state: any): void;
+     * send the reference to the current state.
+     * @param name      [the name of the state]
+     * @param state     [the reference to the state]
+     ********************************************************************/
+    addState(state: IState): void;
 }

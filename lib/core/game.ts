@@ -1,7 +1,7 @@
 /**
  * @author       Digitsensitive <digit.sensitivee@gmail.com>
  * @copyright    2018 Digitsensitive
- * @description  Juno: Game Class
+ * @description  Juno Core: Game Class
  *
  * This is the core game class of Juno.
  * It initialize the canvas, the renderer and the game loop.
@@ -18,24 +18,11 @@
 
 import { API } from "./api";
 import { GameLoop } from "./loop";
-
-interface IState {
-  stateName: string;
-  stateInstance: any;
-}
-
-export interface IGameConfig {
-  name: string;
-  scale: number;
-  width?: number;
-  height?: number;
-}
+import { IGameConfig } from "../interfaces/game-config.interface";
+import { Input } from "./input";
+import { IState } from "../interfaces/state.interface";
 
 export class Game {
-  public isJunoRunning(): void {
-    console.log("Juno's running smoothly!");
-  }
-
   // canvas and renderer and scaling
   private canvas: HTMLCanvasElement;
   private renderer: any;
@@ -44,7 +31,8 @@ export class Game {
   // core juno game classes
   public api: API;
   private gameLoop: GameLoop;
-  private gameStates: IState[];
+  private states: IState[];
+  private inputs: Input;
 
   constructor(config: IGameConfig) {
     /**
@@ -52,6 +40,7 @@ export class Game {
      */
     this.canvas = document.createElement("canvas");
     document.getElementById(config.name).appendChild(this.canvas);
+    this.canvas.style.cursor = "none";
 
     /**
      * Init renderer
@@ -69,53 +58,94 @@ export class Game {
     this.canvas.height =
       config.height * this.scaleFactor || 64 * this.scaleFactor;
 
+    if (config.fullscreen) {
+      this.canvas.width = window.innerWidth;
+      this.canvas.height = window.innerHeight;
+    }
+
     /**
      * Init instance of game loop
      */
     this.gameLoop = new GameLoop();
 
     /**
+     * Set Input
+     */
+    this.inputs = new Input({
+      canvas: this.canvas,
+      renderer: this.renderer,
+      options: {
+        scaleFactor: this.scaleFactor,
+        inputs: {
+          keyboard:
+            config.allowedInputs.keyboard !== undefined
+              ? config.allowedInputs.keyboard
+              : true,
+          mouse:
+            config.allowedInputs.mouse !== undefined
+              ? config.allowedInputs.mouse
+              : false
+        }
+      }
+    });
+
+    /**
      * Init an API instance
      */
-    this.api = new API(this.canvas, this.renderer, this.scaleFactor);
-    this.api.initPalette(
+
+    this.api = new API(
+      {
+        canvas: this.canvas,
+        renderer: this.renderer,
+        options: { scaleFactor: this.scaleFactor }
+      },
+      this.inputs
+    );
+    this.api.ipal(
       "140C1C44243430346D4E4A4F854C30346524D04648757161597DCED27D2C8595A16DAA2CD2AA996DC2CADAD45EDEEED6"
     );
 
     /**
      * Array with the game states
      */
-    this.gameStates = [];
+    this.states = [];
   }
 
-  /**
-   * This function starts the game.
+  /********************************************************************
+   * This function adds a game state.
    * You have to define a name for the state and
-   * send the reference to the current game state.
-   * @param name      [the name of the game state]
-   * @param state     [the reference to the game state]
-   */
-  public startGame(name: string, state: any): void {
-    // add the game state to the array
-    this.gameStates.push({ stateName: name, stateInstance: state });
+   * send the reference to the current state.
+   * @param name      [the name of the state]
+   * @param state     [the reference to the state]
+   ********************************************************************/
+  public addState(state: IState): void {
+    // add state to states array
+    this.states.push(state);
 
-    // register events for the game state
+    // register events for the state
+    this.gameLoop.on(
+      "init",
+      function() {
+        state.instance.init();
+      },
+      state.instance
+    );
     this.gameLoop.on(
       "update",
       function(dt) {
-        state.update(dt);
+        state.instance.update(dt);
       },
-      state
+      state.instance
     );
     this.gameLoop.on(
       "render",
       function(dt) {
-        state.render(dt);
+        state.instance.render(dt);
       },
-      state
+      state.instance
     );
 
     // start the game loop with this state
-    this.gameLoop.start(name);
+    this.gameLoop.start(state.name);
   }
 }

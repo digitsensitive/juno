@@ -5,9 +5,13 @@
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
 
-export * from "./game";
-export * from "./loop";
+// juno core
+export * from "./core/game";
+export * from "./core/api";
+export * from "./core/state";
 
-export * from "./api";
-
+// juno polyfills
 export * from "./polyfills/performance.now";
+
+// juno interfaces
+export * from "./interfaces/game-config.interface";

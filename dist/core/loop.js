@@ -2,7 +2,7 @@
 /**
  * @author       Digitsensitive <digit.sensitivee@gmail.com>
  * @copyright    2018 Digitsensitive
- * @description  Juno: Game Loop
+ * @description  Juno Core: Game Loop
  *
  * This is the core game loop of the juno html5 game framework.
  * Juno uses a fixed update time step with a variable rendering. This
@@ -24,47 +24,36 @@
  *
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var eventemitter3_1 = require("../node_modules/eventemitter3");
-var performance_now_1 = require("./polyfills/performance.now");
-var GameLoop = /** @class */ (function (_super) {
-    __extends(GameLoop, _super);
-    function GameLoop() {
-        var _this = _super.call(this) || this;
-        _this.fps = 60;
-        _this.paused = false;
-        _this.step = 1 / _this.fps;
-        return _this;
+const eventemitter3_1 = require("../../node_modules/eventemitter3");
+const performance_now_1 = require("../polyfills/performance.now");
+class GameLoop extends eventemitter3_1.EventEmitter {
+    constructor() {
+        super();
+        this.fps = 60;
+        this.paused = false;
+        this.step = 1 / this.fps;
     }
     /**
      * Start the game loop
      * @param state [name of the state to start]
      */
-    GameLoop.prototype.start = function (state) {
+    start(state) {
+        this.init();
         this.paused = false;
         this.currentTime = performance_now_1.ElapsedTime();
         this.accumulator = 0;
         requestAnimationFrame(this.frame.bind(this));
-    };
+    }
     /**
      * Execution of one frame (= tick).
      */
-    GameLoop.prototype.frame = function () {
+    frame() {
         if (!this.paused) {
-            var newTime = performance_now_1.ElapsedTime();
+            let newTime = performance_now_1.ElapsedTime();
             // it is important that frameTime is in seconds
             // because this.step is also in seconds
-            var frameTime = (newTime - this.currentTime) / 1000;
+            let frameTime = (newTime - this.currentTime) / 1000;
             this.currentTime = newTime;
             this.accumulator += frameTime;
             while (this.accumulator >= this.step) {
@@ -74,21 +63,26 @@ var GameLoop = /** @class */ (function (_super) {
             this.render(this.accumulator / this.step);
             requestAnimationFrame(this.frame.bind(this));
         }
-    };
+    }
+    /**
+     * Init the game
+     */
+    init() {
+        this.emit("init");
+    }
     /**
      * Update the game
      * @param interval [interval in seconds]
      */
-    GameLoop.prototype.update = function (interval) {
+    update(interval) {
         this.emit("update", interval);
-    };
+    }
     /**
      * Render the game
      * @param delta [delta in seconds]
      */
-    GameLoop.prototype.render = function (delta) {
+    render(delta) {
         this.emit("render", delta);
-    };
-    return GameLoop;
-}(eventemitter3_1.EventEmitter));
+    }
+}
 exports.GameLoop = GameLoop;
