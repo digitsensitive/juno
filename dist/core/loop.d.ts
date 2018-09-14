@@ -23,7 +23,7 @@
  *
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
-import { EventEmitter } from "../../node_modules/eventemitter3";
+import { EventEmitter } from "eventemitter3";
 export declare class GameLoop extends EventEmitter {
     private accumulator;
     private currentTime;
