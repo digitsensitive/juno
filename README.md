@@ -1,4 +1,4 @@
-# Juno
+# JUNO
 [![dependencies status badge](https://david-dm.org/digitsensitive/juno/status.svg)](https://david-dm.org/digitsensitive/juno)
 [![development dependencies status badge](https://david-dm.org/digitsensitive/juno/dev-status.svg)](https://david-dm.org/digitsensitive/juno/?type=dev)
 [![GitHub issues](https://img.shields.io/github/issues/digitsensitive/juno.svg)](https://github.com/digitsensitive/juno/issues)
@@ -6,11 +6,6 @@
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
 [![GitHub license](https://img.shields.io/github/license/digitsensitive/juno.svg)](https://github.com/digitsensitive/juno)
 
-<div align="center">
-  <sub>Created with ❤︎ by <a href="https://github.com/digitsensitive">digitsensitive</a></sub>
-</div>
-
-# Juno
 Juno is a simple and lightweight 2D game framework written in TypeScript for
 making tiny HTML5 Games. The structure of Juno is similar to that of
 [fantasy consoles](https://github.com/paladin-t/fantasy) with simple and
@@ -20,6 +15,10 @@ With Juno you can create wonderful pixel-art games in a nutshell.
 
 The framework is still in a very early stage of development. We do not support
 any editors, but you can easily load your spritesheets.
+
+<div align="center">
+  <sub>Created with ❤︎ by <a href="https://github.com/digitsensitive">digitsensitive</a></sub>
+</div>
 
 ## Getting started
 
