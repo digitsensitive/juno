@@ -38,46 +38,70 @@ For a boilerplate and examples have a look at the
 
 ## API
 
-`ipal`(palette: string): void;
+For more details see comments in the code.
 
-`cls`(c?: number): void;
+`ipal`
+Init your own color palatte.
 
-`pix`(x0: number, y0: number, c: number): void;
+`cls`
+Clear the screen.
 
-`circb`(x0: number, y0: number, r: number, c: number): void;
+`pix`
+Draw a pixel.
 
-`circ`(x0: number, y0: number, r: number, c: number): void;
+`circb`
+Draw a circle outline.
 
-`line`(x0: number, y0: number, x1: number, y1: number, c: number): void;
+`circ`
+Draw a filled circle.
 
-`rect`(x0: number, y0: number, w: number, h: number, c: number): void;
+`line`
+Draw a line.
 
-`rectb`(x0: number, y0: number, w: number, h: number, c: number): void;
+`rect`
+Draw a filled rect.
 
-`print`(s: string, x0: number, y0: number, c: number, a?: number, sc?: number): void;
+`rectb`
+Draw a rectangle outline.
 
-`trace`(s: string | number): void;
+`print`
+Draw some text.
 
-`load`(n: string, p: string, size: number): void;
+`trace`
+Trace a variable for it's value.
 
-`spr`(s: number, x0: number, y0: number): void;
+`load`
+Load your spritesheet.
 
-`key`(code: number): boolean;
+`spr`
+Add a sprite.
 
-`keyp`(code: number): boolean;
+`key`
+Check if a key is currently pressed.
 
-`mouse`(): IMouseCoordinates;
+`keyp`
+Check if a key was pressed in the frame before (only once).
 
-`ggw`(): number;
+`mouse`
+Get the mouse coordinates.
 
-`ggh`(): number;
+`ggw`
+Get the game width.
 
-`ticks`(): number;
+`ggh`
+Get the game height.
 
-`rnd`(min: number, max: number): number;
+`ticks`
+Get the ticks since start of the game.
 
-`crc`(c: any, r: any): boolean;
+`rnd`
+Get a random number between min and max value.
 
-`rrc`(r1: any, r2: any): boolean;
+`crc`
+Simple circle-rectangle-collision.
 
-`anim`(object: any, startFrame: number, numberOfFrames: number, speed: number): void;
+`rrc`
+Simple rectangle-rectangle collision.
+
+`anim`
+Animate your sprite.
