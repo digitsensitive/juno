@@ -29,30 +29,51 @@ bower install juno-console --save
 
 ### Quick-Setup
 
-For examples have a look at the
+For a boilerplate and examples have a look at the
 [official Juno examples](https://github.com/digitsensitive/juno-console-examples).
 
 ## API
 
 `ipal`(palette: string): void;
+
 `cls`(c?: number): void;
+
 `pix`(x0: number, y0: number, c: number): void;
+
 `circb`(x0: number, y0: number, r: number, c: number): void;
+
 `circ`(x0: number, y0: number, r: number, c: number): void;
+
 `line`(x0: number, y0: number, x1: number, y1: number, c: number): void;
+
 `rect`(x0: number, y0: number, w: number, h: number, c: number): void;
+
 `rectb`(x0: number, y0: number, w: number, h: number, c: number): void;
+
 `print`(s: string, x0: number, y0: number, c: number, a?: number, sc?: number): void;
+
 `trace`(s: string | number): void;
+
 `load`(n: string, p: string, size: number): void;
+
 `spr`(s: number, x0: number, y0: number): void;
+
 `key`(code: number): boolean;
+
 `keyp`(code: number): boolean;
+
 `mouse`(): IMouseCoordinates;
+
 `ggw`(): number;
+
 `ggh`(): number;
+
 `ticks`(): number;
+
 `rnd`(min: number, max: number): number;
+
 `crc`(c: any, r: any): boolean;
+
 `rrc`(r1: any, r2: any): boolean;
+
 `anim`(object: any, startFrame: number, numberOfFrames: number, speed: number): void;
