@@ -22,7 +22,7 @@ bower install juno-console --save
 ## Usage
 
 For a boilerplate and examples have a look at the
-[official Juno examples](https://github.com/digitsensitive/juno-console-examples).
+[official Juno examples](https://github.com/digitsensitive/juno-examples).
 
 ## API
 
