@@ -11,12 +11,6 @@ any editors, but you can easily load your spritesheets.
 
 ## Getting started
 
-### Prerequisites
-
-```
-Download and install npm with Node.js @ https://nodejs.org/en
-```
-
 ### Installation
 
 ```sh
