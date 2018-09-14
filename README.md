@@ -7,7 +7,7 @@
 [![GitHub license](https://img.shields.io/github/license/digitsensitive/juno.svg)](https://github.com/digitsensitive/juno)
 
 <div align="center">
-  <sub></> with ❤︎ by <a href="https://github.com/digitsensitive">digitsensitive</a></sub>
+  <sub>Created with ❤︎ by <a href="https://github.com/digitsensitive">digitsensitive</a></sub>
 </div>
 
 # Juno
