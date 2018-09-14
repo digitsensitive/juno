@@ -24,7 +24,7 @@
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
 
-import { EventEmitter } from "../../node_modules/eventemitter3";
+import { EventEmitter } from "eventemitter3";
 import { ElapsedTime } from "../polyfills/performance.now";
 
 export class GameLoop extends EventEmitter {
