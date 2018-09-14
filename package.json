@@ -23,7 +23,7 @@
     "performance-now": "^2.1.0"
   },
   "devDependencies": {
-    "typescript": "^3.0.3"
+    "typescript": "^2.9.2"
   },
   "repository": {
     "type": "git",
