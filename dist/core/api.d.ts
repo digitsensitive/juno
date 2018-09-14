@@ -22,6 +22,8 @@ export declare class API {
      * Init color palette with chain hex color string
      * Total 16 colors: 6 * 16 = 96 (string length)
      * Examples:
+     * Juno:
+     * 1a1c2c572956b14156ee7b58ffd079a0f07238b86e276e7b29366f405bd04fa4f786ecf8f4f4f493b6c1557185324056
      * TIC-80 (DB16):
      * 140C1C44243430346D4E4A4F854C30346524D04648757161597DCED27D2C8595A16DAA2CD2AA996DC2CADAD45EDEEED6
      * COMMODORE VIC-20 PALETTE
@@ -52,7 +54,7 @@ export declare class API {
      * Clear the screen with a specified color.
      * @param color [index of the color in the palette]
      /********************************************************************/
-    cls(c: number): void;
+    cls(c?: number): void;
     /********************************************************************
      * Draw one pixel at a specific 2D location (x and y).
      * @param x0    [x coordinate of the pixel]
@@ -78,20 +80,22 @@ export declare class API {
      ********************************************************************/
     private circbPixGroup;
     /********************************************************************
+     * Filled Circle (100%)
      * Create a filled circle with the Bresenham's circle algorithm.
-     * @param  x         [x coordinate of the center of the circle]
-     * @param  y         [y coordinate of the center of the circle]
-     * @param  r         [radius of the circle]
-     * @param  c         [index of the color in the palette]
+     * @param x0 [x coordinate of the center of the circle]
+     * @param y0 [y coordinate of the center of the circle]
+     * @param r  [radius of the circle]
+     * @param c  [index of the color in the palette]
      ********************************************************************/
     circ(x0: number, y0: number, r: number, c: number): void;
     /********************************************************************
-     * [pixel description]
-     * @param xc [description]
-     * @param yc [description]
-     * @param x  [description]
-     * @param y  [description]
-     * @param c  [description]
+     * Group of pixel lines (100%)
+     * Draws a group of lines, used for drawing a filled circle.
+     * @param x0 [first x coordinate]
+     * @param y0 [first y coordinate]
+     * @param x  [second x coordinate]
+     * @param y  [second y coordinate]
+     * @param c  [index of the color in the palette]
      ********************************************************************/
     private circPixGroup;
     /********************************************************************
@@ -129,7 +133,7 @@ export declare class API {
      * @param c  [index of the color in the palette]
      * @param sc [scale factor of the text]
      ********************************************************************/
-    print(s: string, x0: number, y0: number, c: number, sc?: number): void;
+    print(s: string, x0: number, y0: number, c: number, a?: number, sc?: number): void;
     /********************************************************************
      * Trace a string or a number => Alternative to console.log().
      * @param s [the string or number to trace]
@@ -181,9 +185,11 @@ export declare class API {
      ********************************************************************/
     ggh(): number;
     ticks(): number;
+    rnd(min: number, max: number): number;
     /********************************************************************
-     * [colorRangeError description]
-     * @param color [description]
+     * Color Range Error (100%)
+     * Check if the selected color is between 0 and 15.
+     * @param c [the color to check]
      ********************************************************************/
     private colorRangeError;
     /********************************************************************
@@ -192,4 +198,5 @@ export declare class API {
     crc(c: any, r: any): boolean;
     rrc(r1: any, r2: any): boolean;
     anim(object: any, startFrame: number, numberOfFrames: number, speed: number): void;
+    private calculateAlphaHexCode;
 }

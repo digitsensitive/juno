@@ -50,7 +50,7 @@ export class GameLoop extends EventEmitter {
     this.paused = false;
     this.currentTime = ElapsedTime();
     this.accumulator = 0;
-    requestAnimationFrame(this.frame.bind(this));
+    this.frame();
   }
 
   /**

@@ -7,11 +7,17 @@
 export interface IGameConfig {
     name: string;
     scale: number;
-    allowedInputs?: {
+    input?: {
         keyboard?: boolean;
         mouse?: boolean;
     };
     width?: number;
     height?: number;
     fullscreen?: boolean;
+    css?: {
+        borderWidth?: string;
+        borderStyle?: string;
+        borderColor?: string;
+        borderRadius?: string;
+    };
 }

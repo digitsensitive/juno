@@ -43,6 +43,40 @@ export class Game {
     this.canvas.style.cursor = "none";
 
     /**
+     * Init CSS properties
+     */
+
+    if (config.css === undefined) {
+      config.css = {};
+    }
+
+    if (config.css.borderWidth === undefined) {
+      config.css.borderWidth = "2rem";
+    }
+    if (config.css.borderStyle === undefined) {
+      config.css.borderStyle = "solid";
+    }
+    if (config.css.borderColor === undefined) {
+      config.css.borderColor = "#1a1c2c";
+    }
+    if (config.css.borderRadius === undefined) {
+      config.css.borderRadius = "20px";
+    }
+
+    document
+      .getElementById(config.name)
+      .style.setProperty("--border-width", config.css.borderWidth);
+    document
+      .getElementById(config.name)
+      .style.setProperty("--border-style", config.css.borderStyle);
+    document
+      .getElementById(config.name)
+      .style.setProperty("--border-color", config.css.borderColor);
+    document
+      .getElementById(config.name)
+      .style.setProperty("--border-radius", config.css.borderRadius);
+
+    /**
      * Init renderer
      */
     this.renderer = this.canvas.getContext("2d");
@@ -78,13 +112,8 @@ export class Game {
         scaleFactor: this.scaleFactor,
         inputs: {
           keyboard:
-            config.allowedInputs.keyboard !== undefined
-              ? config.allowedInputs.keyboard
-              : true,
-          mouse:
-            config.allowedInputs.mouse !== undefined
-              ? config.allowedInputs.mouse
-              : false
+            config.input.keyboard !== undefined ? config.input.keyboard : true,
+          mouse: config.input.mouse !== undefined ? config.input.mouse : false
         }
       }
     });
@@ -102,7 +131,7 @@ export class Game {
       this.inputs
     );
     this.api.ipal(
-      "140C1C44243430346D4E4A4F854C30346524D04648757161597DCED27D2C8595A16DAA2CD2AA996DC2CADAD45EDEEED6"
+      "1a1c2c572956b14156ee7b58ffd079a0f07238b86e276e7b29366f405bd04fa4f786ecf8f4f4f493b6c1557185324056"
     );
 
     /**

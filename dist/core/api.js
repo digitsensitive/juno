@@ -21,6 +21,8 @@ class API {
      * Init color palette with chain hex color string
      * Total 16 colors: 6 * 16 = 96 (string length)
      * Examples:
+     * Juno:
+     * 1a1c2c572956b14156ee7b58ffd079a0f07238b86e276e7b29366f405bd04fa4f786ecf8f4f4f493b6c1557185324056
      * TIC-80 (DB16):
      * 140C1C44243430346D4E4A4F854C30346524D04648757161597DCED27D2C8595A16DAA2CD2AA996DC2CADAD45EDEEED6
      * COMMODORE VIC-20 PALETTE
@@ -50,7 +52,7 @@ class API {
         this.palette = [];
         let fromPositionInString = 0;
         while (fromPositionInString < 96) {
-            this.palette.push(palette.substr(fromPositionInString, 6));
+            this.palette.push("#" + palette.substr(fromPositionInString, 6));
             fromPositionInString += 6;
         }
     }
@@ -59,13 +61,20 @@ class API {
      * @param color [index of the color in the palette]
      /********************************************************************/
     cls(c) {
-        // evaluate runtime errors
-        this.colorRangeError(c);
+        const context = this.cr.renderer;
+        if (c === undefined) {
+            // clear screen
+            context.clearRect(0, 0, this.cr.canvas.width, this.cr.canvas.height);
+        }
+        else {
+            // evaluate runtime errors
+            this.colorRangeError(c);
+            // draw the selected color on screen
+            context.fillStyle = this.palette[c];
+            context.fillRect(0, 0, this.cr.canvas.width, this.cr.canvas.height);
+        }
         // update ticks
         this.passedTicks += 1;
-        this.cr.renderer.clearRect(0, 0, this.cr.canvas.width, this.cr.canvas.height);
-        this.cr.renderer.fillStyle = "#" + this.palette[c];
-        this.cr.renderer.fillRect(0, 0, this.cr.canvas.width, this.cr.canvas.height);
     }
     /********************************************************************
      * Draw one pixel at a specific 2D location (x and y).
@@ -76,7 +85,7 @@ class API {
     pix(x0, y0, c) {
         // evaluate runtime errors
         this.colorRangeError(c);
-        this.cr.renderer.fillStyle = "#" + this.palette[c];
+        this.cr.renderer.fillStyle = this.palette[c];
         this.cr.renderer.fillRect(x0 * this.cr.options.scaleFactor, y0 * this.cr.options.scaleFactor, this.cr.options.scaleFactor, this.cr.options.scaleFactor);
     }
     /********************************************************************
@@ -94,12 +103,11 @@ class API {
         let p = 3 - 2 * r;
         this.circbPixGroup(x0, y0, x, y, c);
         while (x < y) {
+            x++;
             if (p < 0) {
-                x++;
                 p = p + 4 * x + 6;
             }
             else {
-                x++;
                 y--;
                 p = p + 4 * (x - y) + 10;
             }
@@ -125,26 +133,27 @@ class API {
         this.pix(x0 - y, y0 - x, c);
     }
     /********************************************************************
+     * Filled Circle (100%)
      * Create a filled circle with the Bresenham's circle algorithm.
-     * @param  x         [x coordinate of the center of the circle]
-     * @param  y         [y coordinate of the center of the circle]
-     * @param  r         [radius of the circle]
-     * @param  c         [index of the color in the palette]
+     * @param x0 [x coordinate of the center of the circle]
+     * @param y0 [y coordinate of the center of the circle]
+     * @param r  [radius of the circle]
+     * @param c  [index of the color in the palette]
      ********************************************************************/
     circ(x0, y0, r, c) {
         // evaluate runtime errors
         this.colorRangeError(c);
+        // draw filled circle
         let x = 0;
         let y = r;
         let p = 3 - 2 * r;
         this.circPixGroup(x0, y0, x, y, c);
         while (x < y) {
+            x++;
             if (p < 0) {
-                x++;
                 p = p + 4 * x + 6;
             }
             else {
-                x++;
                 y--;
                 p = p + 4 * (x - y) + 10;
             }
@@ -152,18 +161,19 @@ class API {
         }
     }
     /********************************************************************
-     * [pixel description]
-     * @param xc [description]
-     * @param yc [description]
-     * @param x  [description]
-     * @param y  [description]
-     * @param c  [description]
+     * Group of pixel lines (100%)
+     * Draws a group of lines, used for drawing a filled circle.
+     * @param x0 [first x coordinate]
+     * @param y0 [first y coordinate]
+     * @param x  [second x coordinate]
+     * @param y  [second y coordinate]
+     * @param c  [index of the color in the palette]
      ********************************************************************/
     circPixGroup(x0, y0, x, y, c) {
-        this.line(x0 - x, y0 + y, x0 + x, y0 + y, c);
-        this.line(x0 + x, y0 - y, x0 - x, y0 - y, c);
         this.line(x0 + x, y0 + y, x0 - x, y0 + y, c);
         this.line(x0 + x, y0 - y, x0 - x, y0 - y, c);
+        this.line(x0 + y, y0 + x, x0 - y, y0 + x, c);
+        this.line(x0 + y, y0 - x, x0 - y, y0 - x, c);
     }
     /********************************************************************
      * Create a line with the Bresenham's line algorithm.
@@ -220,7 +230,7 @@ class API {
             throw new RangeError("The height of a rectangle must be > 0. ");
         }
         this.colorRangeError(c);
-        this.cr.renderer.fillStyle = "#" + this.palette[c];
+        this.cr.renderer.fillStyle = this.palette[c];
         this.cr.renderer.fillRect(x0 * this.cr.options.scaleFactor, y0 * this.cr.options.scaleFactor, w * this.cr.options.scaleFactor, h * this.cr.options.scaleFactor);
     }
     /********************************************************************
@@ -256,7 +266,7 @@ class API {
      * @param c  [index of the color in the palette]
      * @param sc [scale factor of the text]
      ********************************************************************/
-    print(s, x0, y0, c, sc) {
+    print(s, x0, y0, c, a, sc) {
         // evaluate runtime errors
         if (sc !== undefined && sc < 1) {
             throw new RangeError("The font size cannot be smaller than 1. ");
@@ -267,7 +277,8 @@ class API {
         this.colorRangeError(c);
         let size = sc * 3 * this.cr.options.scaleFactor || 3 * this.cr.options.scaleFactor;
         this.cr.renderer.font = size + "px Juno";
-        this.cr.renderer.fillStyle = "#" + this.palette[c];
+        this.cr.renderer.fillStyle =
+            this.palette[c] + this.calculateAlphaHexCode(a || 1);
         this.cr.renderer.fillText(s, x0 * this.cr.options.scaleFactor, y0 * this.cr.options.scaleFactor + size);
     }
     /********************************************************************
@@ -473,14 +484,18 @@ class API {
     ticks() {
         return this.passedTicks;
     }
+    rnd(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
     /********************************************************************
-     * [colorRangeError description]
-     * @param color [description]
+     * Color Range Error (100%)
+     * Check if the selected color is between 0 and 15.
+     * @param c [the color to check]
      ********************************************************************/
-    colorRangeError(color) {
-        if (color < 0 || color > 15) {
+    colorRangeError(c) {
+        if (c < 0 || c > 15) {
             throw new RangeError("You have selected an incorrect color index (" +
-                color +
+                c +
                 "). The color must be between 0-15");
         }
     }
@@ -530,6 +545,15 @@ class API {
         }
         object.a_fr = startFrame + object.a_st;
         this.spr(object.a_fr, object.x, object.y);
+    }
+    calculateAlphaHexCode(a) {
+        a = Math.round(a * 100) / 100;
+        var alpha = Math.round(a * 255);
+        var hex = (alpha + 0x10000)
+            .toString(16)
+            .substr(-2)
+            .toUpperCase();
+        return hex;
     }
 }
 exports.API = API;

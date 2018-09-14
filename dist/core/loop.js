@@ -43,7 +43,7 @@ class GameLoop extends eventemitter3_1.EventEmitter {
         this.paused = false;
         this.currentTime = performance_now_1.ElapsedTime();
         this.accumulator = 0;
-        requestAnimationFrame(this.frame.bind(this));
+        this.frame();
     }
     /**
      * Execution of one frame (= tick).

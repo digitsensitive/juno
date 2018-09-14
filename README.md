@@ -1,13 +1,21 @@
 # Juno
-Juno is a clean and lightweight 2D game framework written in TypeScript for
-making HTML5 Games.
+Juno is a simple and lightweight 2D game framework written in TypeScript for
+making tiny HTML5 Games. The structure of Juno is similar to that of
+[fantasy consoles](https://github.com/paladin-t/fantasy) with simple and
+limited number of functions. Thanks to this, prototypes can be created quickly.
 
-The structure of Juno is similar to that of fantasy consoles and in the future
-Juno might become a kind of fantasy console.
+With Juno you can create wonderful pixel-art games in a nutshell.
 
-The framework is still in a very early stage of development.
+The framework is still in a very early stage of development. We do not support
+any editors, but you can easily load your spritesheets.
 
 ## Getting started
+
+### Prerequisites
+
+```
+Download and install npm with Node.js @ https://nodejs.org/en
+```
 
 ### Installation
 
@@ -19,51 +27,32 @@ bower install juno-console --save
 
 ## Usage
 
+### Quick-Setup
+
 For examples have a look at the
 [official Juno examples](https://github.com/digitsensitive/juno-console-examples).
 
 ## API
 
-### ipal()
-Use a chain hex color string to load your color palette.
-A total of 16 colors can be used. Since a string length of 6 is
-required per color, the whole string is 96 characters long.
-
-```
-Example:
-TIC-80 (DB16):
-140C1C44243430346D4E4A4F854C30346524D04648757161597DCED27D2C8595A16DAA2CD2AA996DC2CADAD45EDEEED6
-```
-
-### cls()
-Clear the screen with a specified color from the palette (0-15).
-
-```
-Example:
-Coming soon.
-```
-
-### pix()
-Draw one pixel at a specific 2D location (x and y).
-
-```
-Example:
-Coming soon.
-```
-
-### circb()
-Create a circle outline.
-
-```
-Example:
-Coming soon.
-```
-
-
-### line()
-Create a line.
-
-```
-Example:
-Coming soon.
-```
+`ipal`(palette: string): void;
+`cls`(c?: number): void;
+`pix`(x0: number, y0: number, c: number): void;
+`circb`(x0: number, y0: number, r: number, c: number): void;
+`circ`(x0: number, y0: number, r: number, c: number): void;
+`line`(x0: number, y0: number, x1: number, y1: number, c: number): void;
+`rect`(x0: number, y0: number, w: number, h: number, c: number): void;
+`rectb`(x0: number, y0: number, w: number, h: number, c: number): void;
+`print`(s: string, x0: number, y0: number, c: number, a?: number, sc?: number): void;
+`trace`(s: string | number): void;
+`load`(n: string, p: string, size: number): void;
+`spr`(s: number, x0: number, y0: number): void;
+`key`(code: number): boolean;
+`keyp`(code: number): boolean;
+`mouse`(): IMouseCoordinates;
+`ggw`(): number;
+`ggh`(): number;
+`ticks`(): number;
+`rnd`(min: number, max: number): number;
+`crc`(c: any, r: any): boolean;
+`rrc`(r1: any, r2: any): boolean;
+`anim`(object: any, startFrame: number, numberOfFrames: number, speed: number): void;
