@@ -154,6 +154,13 @@ export declare class API {
      ********************************************************************/
     spr(s: number, x0: number, y0: number): void;
     /********************************************************************
+     * Get pixel color index from 2D position.
+     * @param  x0 [x position of the pixel]
+     * @param  y0 [y position of the pixel]
+     * @return    [the color index of the pixel]
+     ********************************************************************/
+    pget(x0: number, y0: number): number;
+    /********************************************************************
      * Get status of key code passed
      * Return true if key is pressed
      * @param  code [key code passed]
