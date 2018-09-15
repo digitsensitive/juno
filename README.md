@@ -134,7 +134,7 @@ Get pixel color index from 2D position.
 
 ## FAQ
 
-- How is the basic setup?
+**How is the basic setup?**
 
 Have a look at the [Juno examples](https://github.com/digitsensitive/juno-examples).
 You will find a boilerplate.
@@ -144,7 +144,7 @@ to initiate the color palette, load the sprites and define variables.
 With the `update()` function parameters are adjusted and the `render()`
 function draws your masterpieces.
 
-- How do I load my sprites?
+**How do I load my sprites?**
 
 Make a call of the `load()` function in your `init()`. The path is relative
 to your root folder. You can then draw your sprites in the `render()` function.
