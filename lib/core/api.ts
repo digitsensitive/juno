@@ -403,8 +403,8 @@ export class API {
     let p = this.cr.renderer.getImageData(
       x0 * this.cr.options.scaleFactor,
       y0 * this.cr.options.scaleFactor,
-      1,
-      1
+      this.cr.options.scaleFactor,
+      this.cr.options.scaleFactor
     ).data;
     let hex = "#" + p[0] + p[1] + p[2];
 
