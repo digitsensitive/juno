@@ -1,6 +1,5 @@
 # Juno
 [![dependencies status badge](https://david-dm.org/digitsensitive/juno/status.svg)](https://david-dm.org/digitsensitive/juno)
-[![development dependencies status badge](https://david-dm.org/digitsensitive/juno/dev-status.svg)](https://david-dm.org/digitsensitive/juno/?type=dev)
 [![GitHub issues](https://img.shields.io/github/issues/digitsensitive/juno.svg)](https://github.com/digitsensitive/juno/issues)
 [![GitHub stars](https://img.shields.io/github/stars/digitsensitive/juno.svg)](https://github.com/digitsensitive/juno/stargazers)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
