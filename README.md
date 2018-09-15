@@ -9,14 +9,13 @@
 [![GitHub license](https://img.shields.io/github/license/digitsensitive/juno.svg)](https://github.com/digitsensitive/juno)
 
 Juno is a simple and lightweight 2D game framework written in TypeScript for
-making tiny HTML5 Games. The structure of Juno is similar to that of
-[fantasy consoles](https://github.com/paladin-t/fantasy) with simple and
-limited number of functions. Thanks to this, prototypes can be created quickly.
+making tiny pixel style HTML5 Games. The structure of Juno is similar to that of
+[fantasy consoles](https://github.com/paladin-t/fantasy) with a simple API.
+Creating prototypes has never been easier.
 
-With Juno you can create wonderful pixel-art games in a nutshell.
+The framework is still in a very early stage of development.
 
-The framework is still in a very early stage of development. We do not support
-any editors, but you can easily load your spritesheets.
+What are you waiting for? Start with Juno and create games in a nutshell!
 
 <div align="center">
   <sub>Created with ❤︎ by <a href="https://github.com/digitsensitive">digitsensitive</a></sub>
@@ -35,7 +34,7 @@ bower install juno-console --save
 ## Usage
 
 For a boilerplate and examples have a look at the
-[official Juno examples](https://github.com/digitsensitive/juno-examples).
+[Juno examples](https://github.com/digitsensitive/juno-examples).
 
 ## API
 
@@ -132,3 +131,16 @@ Animate your sprite.
 `pget`
 
 Get pixel color index from 2D position.
+
+## FAQ
+
+1. How is the basic setup?
+Have a look at the [Juno examples](https://github.com/digitsensitive/juno-examples).
+You will find a boilerplate.
+
+Basically, only three functions are required. The `init()` function can be used
+to initiate the color palette, load the sprites and define variables.
+With the `update()` function parameters are adjusted and the `render()`
+function draws your masterpieces.
+
+1. How do I load my sprites?
