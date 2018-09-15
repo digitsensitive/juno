@@ -169,3 +169,16 @@ init(): void {
   this.api.ipal(1a1c2c572956b14156ee7b58ffd079a0f07238b86e276e7b29366f405bd04fa4f786ecf8f4f4f493b6c1557185324056);
 }
 ```
+
+## Changelog
+
+[Learn about the latest improvements](https://github.com/digitsensitive/juno/blob/master/CHANGELOG.md)
+
+## Contributing
+
+Want to correct a bug, contribute some code, or improve the codes? Excellent! Let me know!
+
+## License
+
+This project is licensed under the MIT License - see the
+[LICENSE.md](https://github.com/digitsensitive/juno/blob/master/LICENSE.md) file for details.
