@@ -1,5 +1,5 @@
 <p align="center">
-  <img width=100% src="https://github.com/digitsensitive/phaser3-typescript/blob/master/assets/github/juno.png">
+  <img width=100% src="https://github.com/digitsensitive/juno/blob/master/assets/github/juno.png">
 </p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
