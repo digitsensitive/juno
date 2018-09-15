@@ -135,6 +135,7 @@ Get pixel color index from 2D position.
 ## FAQ
 
 1. How is the basic setup?
+
 Have a look at the [Juno examples](https://github.com/digitsensitive/juno-examples).
 You will find a boilerplate.
 
@@ -144,3 +145,17 @@ With the `update()` function parameters are adjusted and the `render()`
 function draws your masterpieces.
 
 1. How do I load my sprites?
+
+Make a call of the `load()` function in your `init()`. The path is relative
+to your root folder. You can then draw your sprites in the `render()` function.
+
+```
+init(): void {
+  this.api.load("sprites", "./src/assets/", 8);
+}
+
+render(): void {
+  this.api.spr(0, 10, 10);
+}
+
+```
