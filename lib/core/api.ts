@@ -406,7 +406,7 @@ export class API {
       this.cr.options.scaleFactor,
       this.cr.options.scaleFactor
     ).data;
-    let hex = "#" + p[0] + p[1] + p[2];
+    let hex = this.rgbToHex(p[0], p[1], p[2]);
 
     let l = this.palette.length;
     for (let p = 0; p < l; p++) {
@@ -418,6 +418,20 @@ export class API {
         );
       }
     }
+  }
+
+  private componentToHex(c): number {
+    let hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+  }
+
+  private rgbToHex(r, g, b): string {
+    return (
+      "#" +
+      this.componentToHex(r) +
+      this.componentToHex(g) +
+      this.componentToHex(b)
+    );
   }
 
   /********************************************************************
