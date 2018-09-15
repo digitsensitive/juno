@@ -336,10 +336,22 @@ class API {
             }
         }
     }
+    /********************************************************************
+     * Converts each primary color to corresponding hex value.
+     * @param  c [the color to convert]
+     * @return   [the hex value as a string]
+     ********************************************************************/
     componentToHex(c) {
         let hex = c.toString(16);
-        return hex.length == 1 ? "0" + hex : hex;
+        return hex.length === 1 ? "0" + hex : hex;
     }
+    /********************************************************************
+     * Converts rgb to hex.
+     * @param  r [r value]
+     * @param  g [g value]
+     * @param  b [b value]
+     * @return   [the final hex-string]
+     ********************************************************************/
     rgbToHex(r, g, b) {
         return ("#" +
             this.componentToHex(r) +

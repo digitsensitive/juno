@@ -160,7 +160,19 @@ export declare class API {
      * @return    [the color index of the pixel]
      ********************************************************************/
     pget(x0: number, y0: number): number;
+    /********************************************************************
+     * Converts each primary color to corresponding hex value.
+     * @param  c [the color to convert]
+     * @return   [the hex value as a string]
+     ********************************************************************/
     private componentToHex;
+    /********************************************************************
+     * Converts rgb to hex.
+     * @param  r [r value]
+     * @param  g [g value]
+     * @param  b [b value]
+     * @return   [the final hex-string]
+     ********************************************************************/
     private rgbToHex;
     /********************************************************************
      * Get status of key code passed
