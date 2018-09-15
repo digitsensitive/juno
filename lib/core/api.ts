@@ -416,12 +416,24 @@ export class API {
     }
   }
 
-  private componentToHex(c): number {
+  /********************************************************************
+   * Converts each primary color to corresponding hex value.
+   * @param  c [the color to convert]
+   * @return   [the hex value as a string]
+   ********************************************************************/
+  private componentToHex(c: number): string {
     let hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
+    return hex.length === 1 ? "0" + hex : hex;
   }
 
-  private rgbToHex(r, g, b): string {
+  /********************************************************************
+   * Converts rgb to hex.
+   * @param  r [r value]
+   * @param  g [g value]
+   * @param  b [b value]
+   * @return   [the final hex-string]
+   ********************************************************************/
+  private rgbToHex(r: number, g: number, b: number): string {
     return (
       "#" +
       this.componentToHex(r) +
