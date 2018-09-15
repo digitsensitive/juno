@@ -42,7 +42,7 @@ For more details see comments in the code.
 
 `ipal`
 
-Init your own color palatte.
+Init your own color palette.
 
 `cls`
 
@@ -157,5 +157,15 @@ init(): void {
 render(): void {
   this.api.spr(0, 10, 10);
 }
+```
 
+**How do I load my own color palette?**
+
+One palette comprises a total of 16 colours. By default, a predefined palette
+is loaded. Your own palette can be loaded using a chain of hex strings (6 x 16 = 96 characters).
+
+```
+init(): void {
+  this.api.ipal(1a1c2c572956b14156ee7b58ffd079a0f07238b86e276e7b29366f405bd04fa4f786ecf8f4f4f493b6c1557185324056);
+}
 ```
