@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ---
 
-## [0.0.39] - 2018-09-15
+## [0.0.40] - 2018-09-15
 
 ### Changes
 - First release of Juno *[Tested: 2018-09-15, digitsensitive]*
