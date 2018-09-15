@@ -160,6 +160,8 @@ export declare class API {
      * @return    [the color index of the pixel]
      ********************************************************************/
     pget(x0: number, y0: number): number;
+    private componentToHex;
+    private rgbToHex;
     /********************************************************************
      * Get status of key code passed
      * Return true if key is pressed

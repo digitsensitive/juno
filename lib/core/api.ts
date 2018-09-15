@@ -412,10 +412,6 @@ export class API {
     for (let p = 0; p < l; p++) {
       if (this.palette[p] === hex) {
         return p;
-      } else {
-        throw new Error(
-          "No pixel-data at the position x = " + x0 + ", y = " + y0 + ". "
-        );
       }
     }
   }
