@@ -1,6 +1,7 @@
 <p align="center">
   <img width=100% src="https://github.com/digitsensitive/juno/blob/master/assets/github/juno.png">
 </p>
+
 [![dependencies status badge](https://david-dm.org/digitsensitive/juno/status.svg)](https://david-dm.org/digitsensitive/juno)
 [![GitHub issues](https://img.shields.io/github/issues/digitsensitive/juno.svg)](https://github.com/digitsensitive/juno/issues)
 [![GitHub stars](https://img.shields.io/github/stars/digitsensitive/juno.svg)](https://github.com/digitsensitive/juno/stargazers)
