@@ -173,8 +173,8 @@ init(): void {
 **OK, so I have chosen a color palette, but how do I get the colors into my graphics editor?**
 
 The easiest way is to load the already defined
-[.css swatch directly](https://github.com/digitsensitive/juno-examples/tree/master/assets/swatches)
-into your graphics editor. Et voilà!
+[.css swatch](https://github.com/digitsensitive/juno-examples/tree/master/assets/swatches)
+directly into your graphics editor. Et voilà!
 
 ## Changelog
 
