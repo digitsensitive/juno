@@ -394,6 +394,33 @@ export class API {
   }
 
   /********************************************************************
+   * Get pixel color index from 2D position.
+   * @param  x0 [x position of the pixel]
+   * @param  y0 [y position of the pixel]
+   * @return    [the color index of the pixel]
+   ********************************************************************/
+  public pget(x0: number, y0: number): number {
+    let p = this.cr.renderer.getImageData(
+      x0 * this.cr.options.scaleFactor,
+      y0 * this.cr.options.scaleFactor,
+      1,
+      1
+    ).data;
+    let hex = "#" + p[0] + p[1] + p[2];
+
+    let l = this.palette.length;
+    for (let p = 0; p < l; p++) {
+      if (this.palette[p] === hex) {
+        return p;
+      } else {
+        throw new Error(
+          "No pixel-data at the position x = " + x0 + ", y = " + y0 + ". "
+        );
+      }
+    }
+  }
+
+  /********************************************************************
    * Get status of key code passed
    * Return true if key is pressed
    * @param  code [key code passed]
