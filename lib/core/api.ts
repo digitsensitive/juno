@@ -16,6 +16,7 @@ import { KEY } from "../enums/key.enum";
 export class API {
   private palette: string[];
   private spritesheets: any[] = [];
+  private jsonFiles: any[] = [];
   private spriteSize: number;
   private passedTicks: number;
 
@@ -350,19 +351,26 @@ export class API {
   }
 
   /********************************************************************
-   * Load a spritesheet.
+   * Load a spritesheet or map json file.
    * @param n    [name of the spritesheet]
    * @param p    [path of the spritesheet]
    * @param size [size of the sprites in the spritesheet]
    ********************************************************************/
-  public load(n: string, p: string, size: number): void {
-    this.spriteSize = size;
-    let image = new Image();
-    let nameWithPNG = n + ".png";
-    let fullPath = p + nameWithPNG;
+  public load(n: string, p: string, type: string, size: number): void {
+    if (type === "png") {
+      this.spriteSize = size;
+      let image = new Image();
+      let nameWithPNG = n + ".png";
+      let fullPath = p + nameWithPNG;
 
-    image.src = fullPath;
-    this.spritesheets.push(image);
+      image.src = fullPath;
+      this.spritesheets.push(image);
+    } else if (type === "json") {
+      var request = new XMLHttpRequest();
+      request.open("GET", p, false);
+      request.send(null);
+      this.jsonFiles.push(JSON.parse(request.responseText));
+    }
   }
 
   /********************************************************************
@@ -706,5 +714,22 @@ export class API {
       .substr(-2)
       .toUpperCase();
     return hex;
+  }
+
+  public map(x0: number, y0: number, w?: number, h?: number): void {
+    let mapArray = this.jsonFiles[0].layers.data;
+    let tileSize = this.jsonFiles[0].tileheight;
+    let numberVerticalTiles = this.jsonFiles[0].layers.height;
+    let numberHorizontalTiles = this.jsonFiles[0].layers.width;
+    let width = w || numberHorizontalTiles;
+    let height = h || numberVerticalTiles;
+
+    let i = 0;
+    for (let y = 0; y < numberVerticalTiles; y++) {
+      for (let x = 0; x < numberHorizontalTiles; x++) {
+        this.spr(i, x * tileSize, y * tileSize);
+        i++;
+      }
+    }
   }
 }
