@@ -717,17 +717,17 @@ export class API {
   }
 
   public map(x0: number, y0: number, w?: number, h?: number): void {
-    let mapArray = this.jsonFiles[0].layers.data;
+    let mapArray = this.jsonFiles[0].layers[0].data;
     let tileSize = this.jsonFiles[0].tileheight;
-    let numberVerticalTiles = this.jsonFiles[0].layers.height;
-    let numberHorizontalTiles = this.jsonFiles[0].layers.width;
+    let numberVerticalTiles = this.jsonFiles[0].layers[0].height;
+    let numberHorizontalTiles = this.jsonFiles[0].layers[0].width;
     let width = w || numberHorizontalTiles;
     let height = h || numberVerticalTiles;
 
     let i = 0;
     for (let y = 0; y < numberVerticalTiles; y++) {
       for (let x = 0; x < numberHorizontalTiles; x++) {
-        this.spr(i, x * tileSize, y * tileSize);
+        this.spr(mapArray[i] - 1, x * tileSize, y * tileSize);
         i++;
       }
     }

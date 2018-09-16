@@ -15,6 +15,7 @@ class API {
         this.cr = cr;
         this.inputs = inputs;
         this.spritesheets = [];
+        this.jsonFiles = [];
         this.passedTicks = 0;
     }
     /********************************************************************
@@ -292,18 +293,26 @@ class API {
         this.print(s, 0, 0, 12);
     }
     /********************************************************************
-     * Load a spritesheet.
+     * Load a spritesheet or map json file.
      * @param n    [name of the spritesheet]
      * @param p    [path of the spritesheet]
      * @param size [size of the sprites in the spritesheet]
      ********************************************************************/
-    load(n, p, size) {
-        this.spriteSize = size;
-        let image = new Image();
-        let nameWithPNG = n + ".png";
-        let fullPath = p + nameWithPNG;
-        image.src = fullPath;
-        this.spritesheets.push(image);
+    load(n, p, type, size) {
+        if (type === "png") {
+            this.spriteSize = size;
+            let image = new Image();
+            let nameWithPNG = n + ".png";
+            let fullPath = p + nameWithPNG;
+            image.src = fullPath;
+            this.spritesheets.push(image);
+        }
+        else if (type === "json") {
+            var request = new XMLHttpRequest();
+            request.open("GET", p, false);
+            request.send(null);
+            this.jsonFiles.push(JSON.parse(request.responseText));
+        }
     }
     /********************************************************************
      * Create a sprite from spritesheet.
@@ -591,6 +600,21 @@ class API {
             .substr(-2)
             .toUpperCase();
         return hex;
+    }
+    map(x0, y0, w, h) {
+        let mapArray = this.jsonFiles[0].layers[0].data;
+        let tileSize = this.jsonFiles[0].tileheight;
+        let numberVerticalTiles = this.jsonFiles[0].layers[0].height;
+        let numberHorizontalTiles = this.jsonFiles[0].layers[0].width;
+        let width = w || numberHorizontalTiles;
+        let height = h || numberVerticalTiles;
+        let i = 0;
+        for (let y = 0; y < numberVerticalTiles; y++) {
+            for (let x = 0; x < numberHorizontalTiles; x++) {
+                this.spr(mapArray[i] - 1, x * tileSize, y * tileSize);
+                i++;
+            }
+        }
     }
 }
 exports.API = API;

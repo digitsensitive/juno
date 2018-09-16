@@ -15,6 +15,7 @@ export declare class API {
     private inputs;
     private palette;
     private spritesheets;
+    private jsonFiles;
     private spriteSize;
     private passedTicks;
     constructor(cr: ICanvasRenderer, inputs: Input);
@@ -140,12 +141,12 @@ export declare class API {
      ********************************************************************/
     trace(s: string | number): void;
     /********************************************************************
-     * Load a spritesheet.
+     * Load a spritesheet or map json file.
      * @param n    [name of the spritesheet]
      * @param p    [path of the spritesheet]
      * @param size [size of the sprites in the spritesheet]
      ********************************************************************/
-    load(n: string, p: string, size: number): void;
+    load(n: string, p: string, type: string, size: number): void;
     /********************************************************************
      * Create a sprite from spritesheet.
      * @param s  [the choosen sprite]
@@ -219,4 +220,5 @@ export declare class API {
     rrc(r1: any, r2: any): boolean;
     anim(object: any, startFrame: number, numberOfFrames: number, speed: number): void;
     private calculateAlphaHexCode;
+    map(x0: number, y0: number, w?: number, h?: number): void;
 }
