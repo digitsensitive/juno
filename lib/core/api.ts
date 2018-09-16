@@ -401,8 +401,8 @@ export class API {
    ********************************************************************/
   public pget(x0: number, y0: number): number {
     let p = this.cr.renderer.getImageData(
-      Math.floor(x0) * this.cr.options.scaleFactor,
-      Math.floor(y0) * this.cr.options.scaleFactor,
+      Math.round(x0) * this.cr.options.scaleFactor,
+      Math.round(y0) * this.cr.options.scaleFactor,
       this.cr.options.scaleFactor,
       this.cr.options.scaleFactor
     ).data;

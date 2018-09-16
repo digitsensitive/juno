@@ -72,7 +72,11 @@ export class Input {
   }
 
   public getMouse(): IMouse {
-    return { x: this.mouse.x, y: this.mouse.y, button: this.currentMouseKey };
+    return {
+      x: Math.round(this.mouse.x),
+      y: Math.round(this.mouse.y),
+      button: this.currentMouseKey
+    };
   }
 
   public getMousePosition(): IMouseCoordinates {
