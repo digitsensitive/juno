@@ -725,9 +725,9 @@ export class API {
     let height = h || numberVerticalTiles;
 
     let i = 0;
-    for (let y = 0; y < numberVerticalTiles; y++) {
-      for (let x = 0; x < numberHorizontalTiles; x++) {
-        this.spr(mapArray[i] - 1, x * tileSize, y * tileSize);
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        this.spr(mapArray[i] - 1, x0 + x * tileSize, y0 + y * tileSize);
         i++;
       }
     }
