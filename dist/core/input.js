@@ -61,7 +61,11 @@ class Input {
         ]);
     }
     getMouse() {
-        return { x: this.mouse.x, y: this.mouse.y, button: this.currentMouseKey };
+        return {
+            x: Math.round(this.mouse.x),
+            y: Math.round(this.mouse.y),
+            button: this.currentMouseKey
+        };
     }
     getMousePosition() {
         return this.mouse;
