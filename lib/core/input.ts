@@ -39,9 +39,11 @@ export class Input {
           this.currentMouseKey = "M";
         } else if (e.button === 2) {
           this.currentMouseKey = "R";
-        } else {
-          this.currentMouseKey = "N";
         }
+      });
+
+      this.cr.canvas.addEventListener("mouseup", e => {
+        this.currentMouseKey = "";
       });
     }
 
