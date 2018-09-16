@@ -9,7 +9,7 @@
  */
 import { ICanvasRenderer } from "../interfaces/canvas-renderer.interface";
 import { Input } from "./input";
-import { IMouseCoordinates } from "../interfaces/mouse-coordinates.interface";
+import { IMouse } from "../interfaces/mouse.interface";
 export declare class API {
     private cr;
     private inputs;
@@ -190,11 +190,10 @@ export declare class API {
     keyp(code: number): boolean;
     sfx(): void;
     /********************************************************************
-     * Return the mouse coordinates.
-     * @param  e [description]
-     * @return   [The mouse coordinates]
+     * Return mouse informations.
+     * @return [IMouse Interface: Coordinates and Button pressed]
      ********************************************************************/
-    mouse(): IMouseCoordinates;
+    mouse(): IMouse;
     /********************************************************************
      * Get the game width in pixels
      * @return [game width]

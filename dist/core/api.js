@@ -498,12 +498,11 @@ class API {
         lfo.start(0);
     }
     /********************************************************************
-     * Return the mouse coordinates.
-     * @param  e [description]
-     * @return   [The mouse coordinates]
+     * Return mouse informations.
+     * @return [IMouse Interface: Coordinates and Button pressed]
      ********************************************************************/
     mouse() {
-        return this.inputs.getMousePosition();
+        return this.inputs.getMouse();
     }
     /********************************************************************
      * Get the game width in pixels
