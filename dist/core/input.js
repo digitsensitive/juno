@@ -23,7 +23,20 @@ class Input {
                 this.mouse.x = (e.x - rect.left) / this.cr.options.scaleFactor;
                 this.mouse.y = (e.y - rect.top) / this.cr.options.scaleFactor;
             });
-            // TODO: Add more event listener f.e. mousedown, mouseup ...
+            this.cr.canvas.addEventListener("mousedown", e => {
+                if (e.button === 0) {
+                    this.currentMouseKey = "L";
+                }
+                else if (e.button === 1) {
+                    this.currentMouseKey = "M";
+                }
+                else if (e.button === 2) {
+                    this.currentMouseKey = "R";
+                }
+                else {
+                    this.currentMouseKey = "N";
+                }
+            });
         }
         if (this.cr.options.inputs.keyboard) {
             window.addEventListener("keydown", e => {
@@ -47,8 +60,14 @@ class Input {
             [89, false]
         ]);
     }
+    getMouse() {
+        return { x: this.mouse.x, y: this.mouse.y, button: this.currentMouseKey };
+    }
     getMousePosition() {
         return this.mouse;
+    }
+    getMouseButton() {
+        return this.currentMouseKey;
     }
     isDown(code) {
         if (this.keys.get(code)) {
