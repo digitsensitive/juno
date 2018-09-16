@@ -10,7 +10,7 @@
 
 import { ICanvasRenderer } from "../interfaces/canvas-renderer.interface";
 import { Input } from "./input";
-import { IMouseCoordinates } from "../interfaces/mouse-coordinates.interface";
+import { IMouse } from "../interfaces/mouse.interface";
 import { KEY } from "../enums/key.enum";
 
 export class API {
@@ -587,12 +587,11 @@ export class API {
   }
 
   /********************************************************************
-   * Return the mouse coordinates.
-   * @param  e [description]
-   * @return   [The mouse coordinates]
+   * Return mouse informations.
+   * @return [IMouse Interface: Coordinates and Button pressed]
    ********************************************************************/
-  public mouse(): IMouseCoordinates {
-    return this.inputs.getMousePosition();
+  public mouse(): IMouse {
+    return this.inputs.getMouse();
   }
 
   /********************************************************************

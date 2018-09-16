@@ -7,9 +7,11 @@
 
 import { ICanvasRenderer } from "../interfaces/canvas-renderer.interface";
 import { IMouseCoordinates } from "../interfaces/mouse-coordinates.interface";
+import { IMouse } from "../interfaces/mouse.interface";
 
 export class Input {
   private mouse: IMouseCoordinates = {} as IMouseCoordinates;
+  private currentMouseKey: string;
   private keys: Map<number, boolean>;
   private lastKeyPressed: number;
 
@@ -29,7 +31,18 @@ export class Input {
         this.mouse.x = (e.x - rect.left) / this.cr.options.scaleFactor;
         this.mouse.y = (e.y - rect.top) / this.cr.options.scaleFactor;
       });
-      // TODO: Add more event listener f.e. mousedown, mouseup ...
+
+      this.cr.canvas.addEventListener("mousedown", e => {
+        if (e.button === 0) {
+          this.currentMouseKey = "L";
+        } else if (e.button === 1) {
+          this.currentMouseKey = "M";
+        } else if (e.button === 2) {
+          this.currentMouseKey = "R";
+        } else {
+          this.currentMouseKey = "N";
+        }
+      });
     }
 
     if (this.cr.options.inputs.keyboard) {
@@ -56,8 +69,16 @@ export class Input {
     ]);
   }
 
+  public getMouse(): IMouse {
+    return { x: this.mouse.x, y: this.mouse.y, button: this.currentMouseKey };
+  }
+
   public getMousePosition(): IMouseCoordinates {
     return this.mouse;
+  }
+
+  public getMouseButton(): string {
+    return this.currentMouseKey;
   }
 
   public isDown(code: number): boolean {
