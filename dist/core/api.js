@@ -327,7 +327,7 @@ class API {
      * @return    [the color index of the pixel]
      ********************************************************************/
     pget(x0, y0) {
-        let p = this.cr.renderer.getImageData(x0 * this.cr.options.scaleFactor, y0 * this.cr.options.scaleFactor, this.cr.options.scaleFactor, this.cr.options.scaleFactor).data;
+        let p = this.cr.renderer.getImageData(Math.floor(x0) * this.cr.options.scaleFactor, Math.floor(y0) * this.cr.options.scaleFactor, this.cr.options.scaleFactor, this.cr.options.scaleFactor).data;
         let hex = this.rgbToHex(p[0], p[1], p[2]);
         let l = this.palette.length;
         for (let p = 0; p < l; p++) {
