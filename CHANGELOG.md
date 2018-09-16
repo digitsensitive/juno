@@ -17,6 +17,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ---
 
+## [0.0.50] - XXXX-XX-XX
+
+### Changes
+- New API function `map()` *[Tested: XXXX-XX-XX, digitsensitive]*
+- Changes in the API function `load()` *[Tested: XXXX-XX-XX, digitsensitive]*
+- New Interface `mouse` *[Tested: 2018-09-16, digitsensitive]*
+- Add `mousedown`and `mouseup`listener to input *[Tested: 2018-09-16, digitsensitive]*
+
+---
+
 ## [0.0.40] - 2018-09-15
 
 ### Changes
