@@ -415,10 +415,10 @@ export class API {
 
       let layerData = [];
       let j = 0;
-      for (let x = 0; x < layer.width; x++) {
-        layerData[x] = [];
-        for (let y = 0; y < layer.height; y++) {
-          layerData[x][y] = data.layers[i].data[j];
+      for (let y = 0; y < layer.height; y++) {
+        layerData[y] = [];
+        for (let x = 0; x < layer.width; x++) {
+          layerData[y][x] = data.layers[i].data[j];
           j++;
         }
       }
@@ -474,7 +474,7 @@ export class API {
 
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
-        this.spr(mapArray[x][y] - 1, x0 + x * tileSize, y0 + y * tileSize);
+        this.spr(mapArray[y][x] - 1, x0 + x * tileSize, y0 + y * tileSize);
       }
     }
   }
