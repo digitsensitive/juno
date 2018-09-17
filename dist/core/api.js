@@ -347,7 +347,7 @@ class API {
             layer.opacity = layers[i].opacity;
             layer.x = layers[i].x;
             layer.y = layers[i].y;
-            tiledMapData.layers.push(layer);
+            tiledMapData.layers[i] = layer;
         }
         // get tilesets
         let tilesets = data.tilesets;
