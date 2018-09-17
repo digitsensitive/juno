@@ -400,10 +400,10 @@ class API {
         }
     }
     mget(x0, y0) {
-        return this.mapData[0].layers[0].data[x0][y0];
+        return this.mapData[0].layers[0].data[y0][x0];
     }
     mset(id, x0, y0) {
-        this.mapData[0].layers[0].data[x0][y0] = id;
+        this.mapData[0].layers[0].data[y0][x0] = id;
     }
     /********************************************************************
      * Create a sprite from spritesheet.
