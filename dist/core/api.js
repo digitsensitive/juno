@@ -301,7 +301,12 @@ class API {
      ********************************************************************/
     load(name, path, size) {
         let extension = path.substr(path.lastIndexOf(".") + 1);
-        if (extension === "png" || extension === "jpg" || extension === "jpeg") {
+        if (extension === "png" ||
+            extension === "PNG" ||
+            extension === "jpg" ||
+            extension === "JPG" ||
+            extension === "jpeg" ||
+            extension === "JPEG") {
             this.spriteSize = size;
             let image = new Image();
             image.src = path;
@@ -322,7 +327,7 @@ class API {
      * @param data [the data to parse]
      ********************************************************************/
     parseJSONDataIntoObject(data) {
-        let tiledMapData;
+        let tiledMapData = {};
         // get basic map data
         tiledMapData.mapWidth = data.width;
         tiledMapData.mapHeight = data.height;

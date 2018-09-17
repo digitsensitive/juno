@@ -361,7 +361,14 @@ export class API {
   public load(name: string, path: string, size: number): void {
     let extension = path.substr(path.lastIndexOf(".") + 1);
 
-    if (extension === "png" || extension === "jpg" || extension === "jpeg") {
+    if (
+      extension === "png" ||
+      extension === "PNG" ||
+      extension === "jpg" ||
+      extension === "JPG" ||
+      extension === "jpeg" ||
+      extension === "JPEG"
+    ) {
       this.spriteSize = size;
       let image = new Image();
       image.src = path;
@@ -384,7 +391,7 @@ export class API {
    * @param data [the data to parse]
    ********************************************************************/
   private parseJSONDataIntoObject(data: any): void {
-    let tiledMapData: ITiledMapJson;
+    let tiledMapData: ITiledMapJson = {} as ITiledMapJson;
 
     // get basic map data
     tiledMapData.mapWidth = data.width;
