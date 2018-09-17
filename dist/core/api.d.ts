@@ -146,7 +146,7 @@ export declare class API {
      * @param p    [path of the spritesheet]
      * @param size [size of the sprites in the spritesheet]
      ********************************************************************/
-    load(n: string, p: string, type: string, size: number): void;
+    load(n: string, p: string, size: number): void;
     /********************************************************************
      * Create a sprite from spritesheet.
      * @param s  [the choosen sprite]

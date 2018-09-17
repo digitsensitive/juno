@@ -298,16 +298,15 @@ class API {
      * @param p    [path of the spritesheet]
      * @param size [size of the sprites in the spritesheet]
      ********************************************************************/
-    load(n, p, type, size) {
-        if (type === "png") {
-            this.spriteSize = size;
+    load(n, p, size) {
+        let extension = p.replace(/\.[^/.]+$/, "").substring(1);
+        this.spriteSize = size;
+        if (extension === "png") {
             let image = new Image();
-            let nameWithPNG = n + ".png";
-            let fullPath = p + nameWithPNG;
-            image.src = fullPath;
+            image.src = p;
             this.spritesheets.push(image);
         }
-        else if (type === "json") {
+        else if (extension === "json") {
             var request = new XMLHttpRequest();
             request.open("GET", p, false);
             request.send(null);
