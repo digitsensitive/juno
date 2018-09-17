@@ -413,7 +413,7 @@ export class API {
       layer.height = data.layers[i].height;
       layer.width = data.layers[i].width;
 
-      let layerData;
+      let layerData = [];
       let j = 0;
       for (let x = 0; x < layer.width; x++) {
         layerData[x] = [];
