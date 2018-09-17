@@ -334,21 +334,23 @@ class API {
         tiledMapData.tileWidth = data.tilewidth;
         tiledMapData.tileHeight = data.tileheight;
         // get layer data
-        let layers = data.layers;
+        let layers = [];
         let layersLength = data.layers.length;
         for (let i = 0; i < layersLength; i++) {
             let layer = {};
-            layer.name = layers[i].name;
-            layer.type = layers[i].type;
-            layer.data = layers[i].data;
-            layer.height = layers[i].height;
-            layer.width = layers[i].width;
-            layer.visible = layers[i].visible;
-            layer.opacity = layers[i].opacity;
-            layer.x = layers[i].x;
-            layer.y = layers[i].y;
-            tiledMapData.layers[i] = layer;
+            layer.name = data.layers[i].name;
+            layer.type = data.layers[i].type;
+            layer.data = data.layers[i].data;
+            layer.height = data.layers[i].height;
+            layer.width = data.layers[i].width;
+            layer.visible = data.layers[i].visible;
+            layer.opacity = data.layers[i].opacity;
+            layer.x = data.layers[i].x;
+            layer.y = data.layers[i].y;
+            layers.push(layer);
         }
+        tiledMapData.layers = [];
+        tiledMapData.layers = layers;
         // get tilesets
         let tilesets = data.tilesets;
         let tilesetsLength = data.tilesets.length;
