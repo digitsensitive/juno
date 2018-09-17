@@ -352,20 +352,22 @@ class API {
         tiledMapData.layers = [];
         tiledMapData.layers = layers;
         // get tilesets
-        let tilesets = data.tilesets;
+        let tilesets = [];
         let tilesetsLength = data.tilesets.length;
         for (let i = 0; i < tilesetsLength; i++) {
             let tileset = {};
             let tileProp = new Map();
-            tileset.name = tilesets[i].name;
-            for (let key in tilesets[i].tileproperties) {
-                if (tilesets[i].tileproperties.hasOwnProperty(key)) {
-                    tileProp.set(key, tilesets[i].tileproperties[key]);
+            tileset.name = data.tilesets[i].name;
+            for (let key in data.tilesets[i].tileproperties) {
+                if (data.tilesets[i].tileproperties.hasOwnProperty(key)) {
+                    tileProp.set(key, data.tilesets[i].tileproperties[key]);
                 }
             }
             tileset.tileProperties = tileProp;
-            tiledMapData.tilesets.push(tileset);
+            tilesets.push(tileset);
         }
+        tiledMapData.tilesets = [];
+        tiledMapData.tilesets = tilesets;
         this.mapData.push(tiledMapData);
     }
     /********************************************************************
