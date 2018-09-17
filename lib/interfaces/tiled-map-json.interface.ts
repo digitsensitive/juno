@@ -13,7 +13,7 @@ export interface ITileset {
 export interface ILayer {
   name: string;
   type: string;
-  data: number[];
+  data: number[][];
   height: number;
   width: number;
   visible: boolean;

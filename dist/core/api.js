@@ -340,9 +340,18 @@ class API {
             let layer = {};
             layer.name = data.layers[i].name;
             layer.type = data.layers[i].type;
-            layer.data = data.layers[i].data;
             layer.height = data.layers[i].height;
             layer.width = data.layers[i].width;
+            let layerData;
+            let j = 0;
+            for (let x = 0; x < layer.width; x++) {
+                layerData[x] = [];
+                for (let y = 0; y < layer.height; y++) {
+                    layerData[x][y] = data.layers[i].data[j];
+                    j++;
+                }
+            }
+            layer.data = layerData;
             layer.visible = data.layers[i].visible;
             layer.opacity = data.layers[i].opacity;
             layer.x = data.layers[i].x;
@@ -384,13 +393,17 @@ class API {
         let numberHorizontalTiles = this.mapData[0].layers[0].width;
         let width = w || numberHorizontalTiles;
         let height = h || numberVerticalTiles;
-        let i = 0;
         for (let y = 0; y < height; y++) {
             for (let x = 0; x < width; x++) {
-                this.spr(mapArray[i] - 1, x0 + x * tileSize, y0 + y * tileSize);
-                i++;
+                this.spr(mapArray[x][y] - 1, x0 + x * tileSize, y0 + y * tileSize);
             }
         }
+    }
+    mget(x0, y0) {
+        return this.mapData[0].layers[0].data[x0][y0];
+    }
+    mset(id, x0, y0) {
+        this.mapData[0].layers[0].data[x0][y0] = id;
     }
     /********************************************************************
      * Create a sprite from spritesheet.

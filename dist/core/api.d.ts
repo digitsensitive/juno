@@ -164,6 +164,8 @@ export declare class API {
      * @param h  [description]
      ********************************************************************/
     map(x0: number, y0: number, w?: number, h?: number): void;
+    mget(x0: number, y0: number): number;
+    mset(id: number, x0: number, y0: number): void;
     /********************************************************************
      * Create a sprite from spritesheet.
      * @param s  [the choosen sprite]
