@@ -14,8 +14,8 @@ class API {
     constructor(cr, inputs) {
         this.cr = cr;
         this.inputs = inputs;
-        this.spritesheets = [];
-        this.jsonFiles = [];
+        this.images = new Map();
+        this.mapData = [];
         this.passedTicks = 0;
     }
     /********************************************************************
@@ -293,24 +293,94 @@ class API {
         this.print(s, 0, 0, 12);
     }
     /********************************************************************
-     * Load a spritesheet or map json file.
-     * @param n    [name of the spritesheet]
-     * @param p    [path of the spritesheet]
-     * @param size [size of the sprites in the spritesheet]
+     * Load your game files (f.e. spritesheet, tiles, json map).
+     * Currently supported file formats: jpg, jpeg, png and json.
+     * @param name    [name of the file]
+     * @param path    [path of the file]
+     * @param size    [size of the sprites]
      ********************************************************************/
-    load(n, p, size) {
-        let extension = p.substr(p.lastIndexOf(".") + 1);
-        this.spriteSize = size;
-        if (extension === "png") {
+    load(name, path, size) {
+        let extension = path.substr(path.lastIndexOf(".") + 1);
+        if (extension === "png" || extension === "jpg" || extension === "jpeg") {
+            this.spriteSize = size;
             let image = new Image();
-            image.src = p;
-            this.spritesheets.push(image);
+            image.src = path;
+            this.images.set(name, image);
         }
-        else if (extension === "json") {
+        if (extension === "json") {
             var request = new XMLHttpRequest();
-            request.open("GET", p, false);
+            request.open("GET", path, false);
             request.send(null);
-            this.jsonFiles.push(JSON.parse(request.responseText));
+            this.parseJSONDataIntoObject(JSON.parse(request.responseText));
+        }
+    }
+    /********************************************************************
+     * Parse JSON data into JSON object.
+     * Currently the following data is parsed:
+     * Map width, Map height, Tile width, Tile height, Layers and Tilesets.
+     * For collisions you should use the boolean "collision".
+     * @param data [the data to parse]
+     ********************************************************************/
+    parseJSONDataIntoObject(data) {
+        let tiledMapData;
+        // get basic map data
+        tiledMapData.mapWidth = data.width;
+        tiledMapData.mapHeight = data.height;
+        tiledMapData.tileWidth = data.tilewidth;
+        tiledMapData.tileHeight = data.tileheight;
+        // get layer data
+        let layers = data.layers;
+        let layersLength = data.layers.length;
+        for (let i = 0; i < layersLength; i++) {
+            let layer;
+            layer.name = layers[i].name;
+            layer.type = layers[i].type;
+            layer.data = layers[i].data;
+            layer.height = layers[i].height;
+            layer.width = layers[i].width;
+            layer.visible = layers[i].visible;
+            layer.opacity = layers[i].opacity;
+            layer.x = layers[i].x;
+            layer.y = layers[i].y;
+            tiledMapData.layers.push(layer);
+        }
+        // get tilesets
+        let tilesets = data.tilesets;
+        let tilesetsLength = data.tilesets.length;
+        for (let i = 0; i < tilesetsLength; i++) {
+            let tileset;
+            let tileProp = new Map();
+            tileset.name = tilesets[i].name;
+            for (let key in tilesets[i].tileproperties) {
+                if (tilesets[i].tileproperties.hasOwnProperty(key)) {
+                    tileProp.set(key, tilesets[i].tileproperties[key]);
+                }
+            }
+            tileset.tileProperties = tileProp;
+            tiledMapData.tilesets.push(tileset);
+        }
+        this.mapData.push(tiledMapData);
+    }
+    /********************************************************************
+     * [map description]
+     * @param x0 [description]
+     * @param y0 [description]
+     * @param w  [description]
+     * @param h  [description]
+     ********************************************************************/
+    map(x0, y0, w, h) {
+        let mapArray = this.mapData[0].layers[0].data;
+        let tileSize = this.mapData[0].tileHeight;
+        let numberVerticalTiles = this.mapData[0].layers[0].height;
+        let numberHorizontalTiles = this.mapData[0].layers[0].width;
+        let width = w || numberHorizontalTiles;
+        let height = h || numberVerticalTiles;
+        let i = 0;
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                this.spr(mapArray[i] - 1, x0 + x * tileSize, y0 + y * tileSize);
+                i++;
+            }
         }
     }
     /********************************************************************
@@ -323,10 +393,10 @@ class API {
         this.cr.renderer.mozImageSmoothingEnabled = false;
         this.cr.renderer.webkitImageSmoothingEnabled = false;
         this.cr.renderer.imageSmoothingEnabled = false;
-        let amountFieldsHorizontal = this.spritesheets[0].width / this.spriteSize;
+        let amountFieldsHorizontal = this.images.values().next().value.width / this.spriteSize;
         let yPos = Math.floor(s / amountFieldsHorizontal);
         let xPos = s - amountFieldsHorizontal * yPos;
-        this.cr.renderer.drawImage(this.spritesheets[0], xPos * this.spriteSize, yPos * this.spriteSize, 8, 8, x0 * this.cr.options.scaleFactor, y0 * this.cr.options.scaleFactor, this.spriteSize * this.cr.options.scaleFactor, this.spriteSize * this.cr.options.scaleFactor);
+        this.cr.renderer.drawImage(this.images.values().next().value, xPos * this.spriteSize, yPos * this.spriteSize, 8, 8, x0 * this.cr.options.scaleFactor, y0 * this.cr.options.scaleFactor, this.spriteSize * this.cr.options.scaleFactor, this.spriteSize * this.cr.options.scaleFactor);
     }
     /********************************************************************
      * Get pixel color index from 2D position.
@@ -599,21 +669,6 @@ class API {
             .substr(-2)
             .toUpperCase();
         return hex;
-    }
-    map(x0, y0, w, h) {
-        let mapArray = this.jsonFiles[0].layers[0].data;
-        let tileSize = this.jsonFiles[0].tileheight;
-        let numberVerticalTiles = this.jsonFiles[0].layers[0].height;
-        let numberHorizontalTiles = this.jsonFiles[0].layers[0].width;
-        let width = w || numberHorizontalTiles;
-        let height = h || numberVerticalTiles;
-        let i = 0;
-        for (let y = 0; y < height; y++) {
-            for (let x = 0; x < width; x++) {
-                this.spr(mapArray[i] - 1, x0 + x * tileSize, y0 + y * tileSize);
-                i++;
-            }
-        }
     }
 }
 exports.API = API;

@@ -14,8 +14,8 @@ export declare class API {
     private cr;
     private inputs;
     private palette;
-    private spritesheets;
-    private jsonFiles;
+    private images;
+    private mapData;
     private spriteSize;
     private passedTicks;
     constructor(cr: ICanvasRenderer, inputs: Input);
@@ -141,12 +141,29 @@ export declare class API {
      ********************************************************************/
     trace(s: string | number): void;
     /********************************************************************
-     * Load a spritesheet or map json file.
-     * @param n    [name of the spritesheet]
-     * @param p    [path of the spritesheet]
-     * @param size [size of the sprites in the spritesheet]
+     * Load your game files (f.e. spritesheet, tiles, json map).
+     * Currently supported file formats: jpg, jpeg, png and json.
+     * @param name    [name of the file]
+     * @param path    [path of the file]
+     * @param size    [size of the sprites]
      ********************************************************************/
-    load(n: string, p: string, size: number): void;
+    load(name: string, path: string, size: number): void;
+    /********************************************************************
+     * Parse JSON data into JSON object.
+     * Currently the following data is parsed:
+     * Map width, Map height, Tile width, Tile height, Layers and Tilesets.
+     * For collisions you should use the boolean "collision".
+     * @param data [the data to parse]
+     ********************************************************************/
+    private parseJSONDataIntoObject;
+    /********************************************************************
+     * [map description]
+     * @param x0 [description]
+     * @param y0 [description]
+     * @param w  [description]
+     * @param h  [description]
+     ********************************************************************/
+    map(x0: number, y0: number, w?: number, h?: number): void;
     /********************************************************************
      * Create a sprite from spritesheet.
      * @param s  [the choosen sprite]
@@ -220,5 +237,4 @@ export declare class API {
     rrc(r1: any, r2: any): boolean;
     anim(object: any, startFrame: number, numberOfFrames: number, speed: number): void;
     private calculateAlphaHexCode;
-    map(x0: number, y0: number, w?: number, h?: number): void;
 }

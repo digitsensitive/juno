@@ -10,13 +10,14 @@
 
 import { ICanvasRenderer } from "../interfaces/canvas-renderer.interface";
 import { Input } from "./input";
+import { ITiledMapJson } from "../interfaces/tiled-map-json.interface";
 import { IMouse } from "../interfaces/mouse.interface";
 import { KEY } from "../enums/key.enum";
 
 export class API {
   private palette: string[];
-  private spritesheets: any[] = [];
-  private jsonFiles: any[] = [];
+  private images: Map<string, HTMLImageElement> = new Map();
+  private mapData: ITiledMapJson[] = [];
   private spriteSize: number;
   private passedTicks: number;
 
@@ -351,24 +352,106 @@ export class API {
   }
 
   /********************************************************************
-   * Load a spritesheet or map json file.
-   * @param n    [name of the spritesheet]
-   * @param p    [path of the spritesheet]
-   * @param size [size of the sprites in the spritesheet]
+   * Load your game files (f.e. spritesheet, tiles, json map).
+   * Currently supported file formats: jpg, jpeg, png and json.
+   * @param name    [name of the file]
+   * @param path    [path of the file]
+   * @param size    [size of the sprites]
    ********************************************************************/
-  public load(n: string, p: string, size: number): void {
-    let extension = p.substr(p.lastIndexOf(".") + 1);
-    this.spriteSize = size;
+  public load(name: string, path: string, size: number): void {
+    let extension = path.substr(path.lastIndexOf(".") + 1);
 
-    if (extension === "png") {
+    if (extension === "png" || extension === "jpg" || extension === "jpeg") {
+      this.spriteSize = size;
       let image = new Image();
-      image.src = p;
-      this.spritesheets.push(image);
-    } else if (extension === "json") {
+      image.src = path;
+      this.images.set(name, image);
+    }
+
+    if (extension === "json") {
       var request = new XMLHttpRequest();
-      request.open("GET", p, false);
+      request.open("GET", path, false);
       request.send(null);
-      this.jsonFiles.push(JSON.parse(request.responseText));
+      this.parseJSONDataIntoObject(JSON.parse(request.responseText));
+    }
+  }
+
+  /********************************************************************
+   * Parse JSON data into JSON object.
+   * Currently the following data is parsed:
+   * Map width, Map height, Tile width, Tile height, Layers and Tilesets.
+   * For collisions you should use the boolean "collision".
+   * @param data [the data to parse]
+   ********************************************************************/
+  private parseJSONDataIntoObject(data: any): void {
+    let tiledMapData: ITiledMapJson;
+
+    // get basic map data
+    tiledMapData.mapWidth = data.width;
+    tiledMapData.mapHeight = data.height;
+    tiledMapData.tileWidth = data.tilewidth;
+    tiledMapData.tileHeight = data.tileheight;
+
+    // get layer data
+    let layers = data.layers;
+    let layersLength = data.layers.length;
+    for (let i = 0; i < layersLength; i++) {
+      let layer;
+      layer.name = layers[i].name;
+      layer.type = layers[i].type;
+      layer.data = layers[i].data;
+      layer.height = layers[i].height;
+      layer.width = layers[i].width;
+      layer.visible = layers[i].visible;
+      layer.opacity = layers[i].opacity;
+      layer.x = layers[i].x;
+      layer.y = layers[i].y;
+      tiledMapData.layers.push(layer);
+    }
+
+    // get tilesets
+    let tilesets = data.tilesets;
+    let tilesetsLength = data.tilesets.length;
+    for (let i = 0; i < tilesetsLength; i++) {
+      let tileset;
+      let tileProp: Map<string, any> = new Map();
+      tileset.name = tilesets[i].name;
+
+      for (let key in tilesets[i].tileproperties) {
+        if (tilesets[i].tileproperties.hasOwnProperty(key)) {
+          tileProp.set(key, tilesets[i].tileproperties[key]);
+        }
+      }
+
+      tileset.tileProperties = tileProp;
+
+      tiledMapData.tilesets.push(tileset);
+    }
+
+    this.mapData.push(tiledMapData);
+  }
+
+  /********************************************************************
+   * [map description]
+   * @param x0 [description]
+   * @param y0 [description]
+   * @param w  [description]
+   * @param h  [description]
+   ********************************************************************/
+  public map(x0: number, y0: number, w?: number, h?: number): void {
+    let mapArray = this.mapData[0].layers[0].data;
+    let tileSize = this.mapData[0].tileHeight;
+    let numberVerticalTiles = this.mapData[0].layers[0].height;
+    let numberHorizontalTiles = this.mapData[0].layers[0].width;
+    let width = w || numberHorizontalTiles;
+    let height = h || numberVerticalTiles;
+
+    let i = 0;
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        this.spr(mapArray[i] - 1, x0 + x * tileSize, y0 + y * tileSize);
+        i++;
+      }
     }
   }
 
@@ -383,12 +466,13 @@ export class API {
     this.cr.renderer.webkitImageSmoothingEnabled = false;
     this.cr.renderer.imageSmoothingEnabled = false;
 
-    let amountFieldsHorizontal = this.spritesheets[0].width / this.spriteSize;
+    let amountFieldsHorizontal =
+      this.images.values().next().value.width / this.spriteSize;
     let yPos = Math.floor(s / amountFieldsHorizontal);
     let xPos = s - amountFieldsHorizontal * yPos;
 
     this.cr.renderer.drawImage(
-      this.spritesheets[0],
+      this.images.values().next().value,
       xPos * this.spriteSize,
       yPos * this.spriteSize,
       8,
@@ -713,22 +797,5 @@ export class API {
       .substr(-2)
       .toUpperCase();
     return hex;
-  }
-
-  public map(x0: number, y0: number, w?: number, h?: number): void {
-    let mapArray = this.jsonFiles[0].layers[0].data;
-    let tileSize = this.jsonFiles[0].tileheight;
-    let numberVerticalTiles = this.jsonFiles[0].layers[0].height;
-    let numberHorizontalTiles = this.jsonFiles[0].layers[0].width;
-    let width = w || numberHorizontalTiles;
-    let height = h || numberVerticalTiles;
-
-    let i = 0;
-    for (let y = 0; y < height; y++) {
-      for (let x = 0; x < width; x++) {
-        this.spr(mapArray[i] - 1, x0 + x * tileSize, y0 + y * tileSize);
-        i++;
-      }
-    }
   }
 }
