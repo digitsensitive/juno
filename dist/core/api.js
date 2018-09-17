@@ -299,7 +299,7 @@ class API {
      * @param size [size of the sprites in the spritesheet]
      ********************************************************************/
     load(n, p, size) {
-        let extension = p.replace(/\.[^/.]+$/, "").substring(1);
+        let extension = p.substr(p.lastIndexOf(".") + 1);
         this.spriteSize = size;
         if (extension === "png") {
             let image = new Image();

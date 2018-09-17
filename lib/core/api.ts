@@ -357,7 +357,7 @@ export class API {
    * @param size [size of the sprites in the spritesheet]
    ********************************************************************/
   public load(n: string, p: string, size: number): void {
-    let extension = p.replace(/\.[^/.]+$/, "").substring(1);
+    let extension = p.substr(p.lastIndexOf(".") + 1);
     this.spriteSize = size;
 
     if (extension === "png") {
