@@ -337,7 +337,7 @@ class API {
         let layers = data.layers;
         let layersLength = data.layers.length;
         for (let i = 0; i < layersLength; i++) {
-            let layer;
+            let layer = {};
             layer.name = layers[i].name;
             layer.type = layers[i].type;
             layer.data = layers[i].data;
@@ -353,7 +353,7 @@ class API {
         let tilesets = data.tilesets;
         let tilesetsLength = data.tilesets.length;
         for (let i = 0; i < tilesetsLength; i++) {
-            let tileset;
+            let tileset = {};
             let tileProp = new Map();
             tileset.name = tilesets[i].name;
             for (let key in tilesets[i].tileproperties) {

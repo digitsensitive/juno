@@ -4,7 +4,11 @@
  * @description  Juno: Tiled Map Json Interface
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
-interface ILayer {
+export interface ITileset {
+    name: string;
+    tileProperties: any;
+}
+export interface ILayer {
     name: string;
     type: string;
     data: number[];
@@ -21,6 +25,5 @@ export interface ITiledMapJson {
     tileWidth: number;
     tileHeight: number;
     layers: ILayer[];
-    tilesets: any[];
+    tilesets: ITileset[];
 }
-export {};

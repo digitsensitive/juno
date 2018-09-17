@@ -10,7 +10,11 @@
 
 import { ICanvasRenderer } from "../interfaces/canvas-renderer.interface";
 import { Input } from "./input";
-import { ITiledMapJson } from "../interfaces/tiled-map-json.interface";
+import {
+  ITiledMapJson,
+  ILayer,
+  ITileset
+} from "../interfaces/tiled-map-json.interface";
 import { IMouse } from "../interfaces/mouse.interface";
 import { KEY } from "../enums/key.enum";
 
@@ -403,7 +407,7 @@ export class API {
     let layers = data.layers;
     let layersLength = data.layers.length;
     for (let i = 0; i < layersLength; i++) {
-      let layer;
+      let layer: ILayer = {} as ILayer;
       layer.name = layers[i].name;
       layer.type = layers[i].type;
       layer.data = layers[i].data;
@@ -420,7 +424,7 @@ export class API {
     let tilesets = data.tilesets;
     let tilesetsLength = data.tilesets.length;
     for (let i = 0; i < tilesetsLength; i++) {
-      let tileset;
+      let tileset: ITileset = {} as ITileset;
       let tileProp: Map<string, any> = new Map();
       tileset.name = tilesets[i].name;
 
