@@ -52,13 +52,37 @@ Clear the screen.
 
 Draw a pixel.
 
-`circb`
+`pget`
 
-Draw a circle outline.
+Get pixel color index from 2D position.
+
+`load`
+
+Load your spritesheet.
+
+`spr`
+
+Add a sprite.
+
+`map`
+
+Load a Tilemap.
+
+`mget`
+
+Get map tile index.
+
+`mset`
+
+Set map tile index.
 
 `circ`
 
 Draw a filled circle.
+
+`circb`
+
+Draw a circle outline.
 
 `line`
 
@@ -79,14 +103,6 @@ Draw some text.
 `trace`
 
 Trace a variable for it's value.
-
-`load`
-
-Load your spritesheet.
-
-`spr`
-
-Add a sprite.
 
 `key`
 
@@ -128,9 +144,6 @@ Simple rectangle-rectangle collision.
 
 Animate your sprite.
 
-`pget`
-
-Get pixel color index from 2D position.
 
 ## FAQ
 
