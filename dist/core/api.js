@@ -419,7 +419,7 @@ class API {
             x0 >= this.mapData[0].layers[0].width ||
             y0 < 0 ||
             y0 >= this.mapData[0].layers[0].height) {
-            throw new RangeError("mget(): Tile coordinate: " + x0 + " / " + y0 + " is out of the range. ");
+            throw new RangeError("mget(): Tile coordinate: " + x + " / " + y + " is out of the range. ");
         }
         return this.mapData[0].layers[0].data[y0][x0];
     }
