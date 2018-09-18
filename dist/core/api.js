@@ -297,7 +297,7 @@ class API {
      * Currently supported file formats: jpg, jpeg, png and json.
      * @param name    [name of the file]
      * @param path    [path of the file]
-     * @param size    [size of the sprites]
+     * @param size    [size of the sprites/tiles]
      ********************************************************************/
     load(name, path, size) {
         let extension = path.substr(path.lastIndexOf(".") + 1);
@@ -313,6 +313,7 @@ class API {
             this.images.set(name, image);
         }
         if (extension === "json") {
+            this.tileSize = size;
             var request = new XMLHttpRequest();
             request.open("GET", path, false);
             request.send(null);
@@ -323,7 +324,7 @@ class API {
      * Parse JSON data into JSON object.
      * Currently the following data is parsed:
      * Map width, Map height, Tile width, Tile height, Layers and Tilesets.
-     * For collisions you should use the boolean "collision".
+     * Only CSV as Tile level format is currently supported.
      * @param data [the data to parse]
      ********************************************************************/
     parseJSONDataIntoObject(data) {
@@ -347,7 +348,9 @@ class API {
             for (let y = 0; y < layer.height; y++) {
                 layerData[y] = [];
                 for (let x = 0; x < layer.width; x++) {
-                    layerData[y][x] = data.layers[i].data[j];
+                    /* correction with - 1 is needed, because indexation with Tiles
+                     starts with 1 and not with 0 */
+                    layerData[y][x] = data.layers[i].data[j] - 1;
                     j++;
                 }
             }
@@ -367,6 +370,7 @@ class API {
             let tileset = {};
             let tileProp = new Map();
             tileset.name = data.tilesets[i].name;
+            tileset.tileCount = data.tilesets[i].tilecount;
             for (let key in data.tilesets[i].tileproperties) {
                 if (data.tilesets[i].tileproperties.hasOwnProperty(key)) {
                     tileProp.set(key, data.tilesets[i].tileproperties[key]);
@@ -395,15 +399,47 @@ class API {
         let height = h || numberVerticalTiles;
         for (let y = 0; y < height; y++) {
             for (let x = 0; x < width; x++) {
-                this.spr(mapArray[y][x] - 1, x0 + x * tileSize, y0 + y * tileSize);
+                this.spr(mapArray[y][x], x0 + x * tileSize, y0 + y * tileSize);
             }
         }
     }
-    mget(x0, y0) {
-        return this.mapData[0].layers[0].data[y0][x0] - 1;
+    /********************************************************************
+     * Get the map tile index at a specific 2D coordinate.
+     * @param  x [the x coordinate of the tile]
+     * @param  y [the y coordinate of the tile]
+     * @return   [the map tile index]
+     ********************************************************************/
+    mget(x, y) {
+        // evaluate runtime errors
+        if (x < 0 ||
+            x >= this.mapData[0].layers[0].width ||
+            y < 0 ||
+            y >= this.mapData[0].layers[0].height) {
+            throw new RangeError("mget(): Tile coordinate: " + x + " / " + y + " is out of the range. ");
+        }
+        // get the actual coordinates. Depends on the tile size.
+        // Use of floor to round downward to its nearest integer
+        let x0 = Math.floor(x / this.tileSize);
+        let y0 = Math.floor(y / this.tileSize);
+        return this.mapData[0].layers[0].data[y0][x0];
     }
-    mset(id, x0, y0) {
-        this.mapData[0].layers[0].data[y0][x0] = id;
+    /********************************************************************
+     * Set the map tile index at a specific 2D coordinate.
+     * @param id [the map tile index to set]
+     * @param x [the x position of the tile to set]
+     * @param y [the y position of the tile to set]
+     ********************************************************************/
+    mset(id, x, y) {
+        if (id < 0 || id > this.mapData[0].tilesets[0].tileCount) {
+            throw new RangeError("mset(): Tile id: " + id + " is out of the range / does not exist. ");
+        }
+        else if (x < 0 ||
+            x >= this.mapData[0].layers[0].width ||
+            y < 0 ||
+            y >= this.mapData[0].layers[0].height) {
+            throw new RangeError("mset(): Tile coordinate: " + x + " / " + y + " is out of the range. ");
+        }
+        this.mapData[0].layers[0].data[y][x] = id;
     }
     /********************************************************************
      * Create a sprite from spritesheet.

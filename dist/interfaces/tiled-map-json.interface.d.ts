@@ -6,6 +6,7 @@
  */
 export interface ITileset {
     name: string;
+    tileCount: number;
     tileProperties: any;
 }
 export interface ILayer {

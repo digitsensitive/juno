@@ -17,6 +17,7 @@ export declare class API {
     private images;
     private mapData;
     private spriteSize;
+    private tileSize;
     private passedTicks;
     constructor(cr: ICanvasRenderer, inputs: Input);
     /********************************************************************
@@ -145,14 +146,14 @@ export declare class API {
      * Currently supported file formats: jpg, jpeg, png and json.
      * @param name    [name of the file]
      * @param path    [path of the file]
-     * @param size    [size of the sprites]
+     * @param size    [size of the sprites/tiles]
      ********************************************************************/
     load(name: string, path: string, size: number): void;
     /********************************************************************
      * Parse JSON data into JSON object.
      * Currently the following data is parsed:
      * Map width, Map height, Tile width, Tile height, Layers and Tilesets.
-     * For collisions you should use the boolean "collision".
+     * Only CSV as Tile level format is currently supported.
      * @param data [the data to parse]
      ********************************************************************/
     private parseJSONDataIntoObject;
@@ -164,8 +165,20 @@ export declare class API {
      * @param h  [description]
      ********************************************************************/
     map(x0: number, y0: number, w?: number, h?: number): void;
-    mget(x0: number, y0: number): number;
-    mset(id: number, x0: number, y0: number): void;
+    /********************************************************************
+     * Get the map tile index at a specific 2D coordinate.
+     * @param  x [the x coordinate of the tile]
+     * @param  y [the y coordinate of the tile]
+     * @return   [the map tile index]
+     ********************************************************************/
+    mget(x: number, y: number): number;
+    /********************************************************************
+     * Set the map tile index at a specific 2D coordinate.
+     * @param id [the map tile index to set]
+     * @param x [the x position of the tile to set]
+     * @param y [the y position of the tile to set]
+     ********************************************************************/
+    mset(id: number, x: number, y: number): void;
     /********************************************************************
      * Create a sprite from spritesheet.
      * @param s  [the choosen sprite]
