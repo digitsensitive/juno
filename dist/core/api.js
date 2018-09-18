@@ -397,9 +397,11 @@ class API {
         let numberHorizontalTiles = this.mapData[0].layers[0].width;
         let width = w || numberHorizontalTiles;
         let height = h || numberVerticalTiles;
+        let x1 = x || 0;
+        let y1 = y || 0;
         for (let y0 = 0; y0 < height; y0++) {
             for (let x0 = 0; x0 < width; x0++) {
-                this.spr(mapArray[y0][x0], x || 0 + x0 * tileSize, y || 0 + y0 * tileSize);
+                this.spr(mapArray[y0][x0], x1 + x0 * tileSize, y1 + y0 * tileSize);
             }
         }
     }
