@@ -17,11 +17,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ---
 
-## [0.0.50] - XXXX-XX-XX
+## [0.0.50] - 2018-09-18
 
 ### Changes
+- Changes in the API function `load()` *[Tested: 2018-09-18, digitsensitive]*
 - New API function `map()` *[Tested: 2018-09-18, digitsensitive]*
-- Changes in the API function `load()` *[Tested: XXXX-XX-XX, digitsensitive]*
 - New API function `mget()` *[Tested: 2018-09-18, digitsensitive]*
 - New API function `mset()` *[Tested: 2018-09-18, digitsensitive]*
 - New Interface `mouse` *[Tested: 2018-09-16, digitsensitive]*

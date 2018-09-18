@@ -312,7 +312,7 @@ class API {
             image.src = path;
             this.images.set(name, image);
         }
-        if (extension === "json") {
+        if (extension === "json" || extension === "JSON") {
             this.tileSize = size;
             var request = new XMLHttpRequest();
             request.open("GET", path, false);
