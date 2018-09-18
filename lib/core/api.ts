@@ -480,7 +480,7 @@ export class API {
   }
 
   public mget(x0: number, y0: number): number {
-    return this.mapData[0].layers[0].data[y0][x0];
+    return this.mapData[0].layers[0].data[y0][x0] - 1;
   }
 
   public mset(id: number, x0: number, y0: number): void {

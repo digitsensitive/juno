@@ -400,7 +400,7 @@ class API {
         }
     }
     mget(x0, y0) {
-        return this.mapData[0].layers[0].data[y0][x0];
+        return this.mapData[0].layers[0].data[y0][x0] - 1;
     }
     mset(id, x0, y0) {
         this.mapData[0].layers[0].data[y0][x0] = id;
