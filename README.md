@@ -13,7 +13,7 @@ making tiny pixel style HTML5 Games. The structure of Juno is similar to that of
 [fantasy consoles](https://github.com/paladin-t/fantasy) with a simple API.
 Creating prototypes has never been easier.
 
-The framework is still in a very early stage of development.
+The framework is still in an early stage of development.
 
 What are you waiting for? Start with Juno and create games in a nutshell!
 
@@ -153,7 +153,7 @@ Have a look at the [Juno examples](https://github.com/digitsensitive/juno-exampl
 You will find a boilerplate.
 
 Basically, only three functions are required. The `init()` function can be used
-to initiate the color palette, load the sprites and define variables.
+to initiate the color palette, load the sprites or the json map file and define variables.
 With the `update()` function parameters are adjusted and the `render()`
 function draws your masterpieces.
 
@@ -164,13 +164,32 @@ to your root folder. You can then draw your sprites in the `render()` function.
 
 ```
 init(): void {
-  this.api.load("sprites", "./src/assets/", 8);
+  this.api.load("sprites", "./src/assets/sprites.png", 8);
 }
 
 render(): void {
   this.api.spr(0, 10, 10);
 }
 ```
+
+> Be aware: Currently you can only load one spritesheet.
+
+**How do I load my JSON map?**
+
+Similar as loading your sprites. Be sure to load your tiles before.
+
+```
+init(): void {
+  this.api.load("tiles", "./assets/tiles.png", 8);
+  this.api.load("map", "./assets/map.json", 8);
+}
+
+render(): void {
+  this.api.spr(0, 10, 10);
+}
+```
+
+> Be aware: Currently you can only load one Tileset.
 
 **How do I load my own color palette?**
 
