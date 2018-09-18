@@ -410,17 +410,17 @@ class API {
      * @return   [the map tile index]
      ********************************************************************/
     mget(x, y) {
-        // evaluate runtime errors
-        if (x < 0 ||
-            x >= this.mapData[0].layers[0].width ||
-            y < 0 ||
-            y >= this.mapData[0].layers[0].height) {
-            throw new RangeError("mget(): Tile coordinate: " + x + " / " + y + " is out of the range. ");
-        }
         // get the actual coordinates. Depends on the tile size.
         // Use of floor to round downward to its nearest integer
         let x0 = Math.floor(x / this.tileSize);
         let y0 = Math.floor(y / this.tileSize);
+        // evaluate runtime errors
+        if (x0 < 0 ||
+            x0 >= this.mapData[0].layers[0].width ||
+            y0 < 0 ||
+            y0 >= this.mapData[0].layers[0].height) {
+            throw new RangeError("mget(): Tile coordinate: " + x0 + " / " + y0 + " is out of the range. ");
+        }
         return this.mapData[0].layers[0].data[y0][x0];
     }
     /********************************************************************
