@@ -463,13 +463,13 @@ export class API {
   }
 
   /********************************************************************
-   * [map description]
-   * @param x0 [description]
-   * @param y0 [description]
-   * @param w  [description]
-   * @param h  [description]
+   * Draw map on the screen.
+   * @param x [the x coordinate to draw the map to]
+   * @param y [the y coordinate to draw the map to]
+   * @param w  [number of tiles to draw to the width]
+   * @param h  [number of tiles to draw to the height]
    ********************************************************************/
-  public map(x0: number, y0: number, w?: number, h?: number): void {
+  public map(x?: number, y?: number, w?: number, h?: number): void {
     let mapArray = this.mapData[0].layers[0].data;
     let tileSize = this.mapData[0].tileHeight;
     let numberVerticalTiles = this.mapData[0].layers[0].height;
@@ -477,9 +477,13 @@ export class API {
     let width = w || numberHorizontalTiles;
     let height = h || numberVerticalTiles;
 
-    for (let y = 0; y < height; y++) {
-      for (let x = 0; x < width; x++) {
-        this.spr(mapArray[y][x], x0 + x * tileSize, y0 + y * tileSize);
+    for (let y0 = 0; y0 < height; y0++) {
+      for (let x0 = 0; x0 < width; x0++) {
+        this.spr(
+          mapArray[y0][x0],
+          x || 0 + x0 * tileSize,
+          y || 0 + y0 * tileSize
+        );
       }
     }
   }
