@@ -418,9 +418,9 @@ class API {
         let y0 = Math.floor(y / this.tileSize);
         // evaluate runtime errors
         if (x0 < 0 ||
-            x0 > this.mapData[0].layers[0].width ||
+            x0 > this.mapData[0].layers[0].width - 1 ||
             y0 < 0 ||
-            y0 > this.mapData[0].layers[0].height) {
+            y0 > this.mapData[0].layers[0].height - 1) {
             throw new RangeError("mget(): Tile coordinate: " + x + " / " + y + " is out of the range. ");
         }
         return this.mapData[0].layers[0].data[y0][x0];

@@ -17,6 +17,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ---
 
+## [0.0.XX] - XXXX-XX-XX
+
+### Changes
+- Bugfix in `mget()` *[Tested: 2018-09-19, digitsensitive]*
+
+---
+
 ## [0.0.50] - 2018-09-18
 
 ### Changes
