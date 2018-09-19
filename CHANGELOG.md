@@ -22,6 +22,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changes
 - Bugfix in `mget()` *[Tested: 2018-09-19, digitsensitive]*
 
+### TODO
+- Collision detection with tiles not working perfectly
+- Add feature to load one Spritesheet and one Tileset
+
 ---
 
 ## [0.0.50] - 2018-09-18
