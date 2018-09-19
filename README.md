@@ -172,7 +172,7 @@ render(): void {
 }
 ```
 
-> Be aware: Currently you can only load one spritesheet.
+> Be aware: Currently you can only load one sheet (spritesheet and Tileset together)
 
 **How do I load my JSON map?**
 
@@ -189,7 +189,7 @@ render(): void {
 }
 ```
 
-> Be aware: Currently you can only load one Tileset.
+> Be aware: Currently you can only load one sheet (spritesheet and Tileset together)
 
 **How do I load my own color palette?**
 
