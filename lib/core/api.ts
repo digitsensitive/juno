@@ -485,11 +485,13 @@ export class API {
     let numberHorizontalTiles = this.mapData[0].layers[0].width;
     let width = w || numberHorizontalTiles;
     let height = h || numberVerticalTiles;
+    let initX = x || 0;
+    let initY = y || 0;
     let x1 = sx || 0;
     let y1 = sy || 0;
 
-    for (let y0 = y; y0 < height; y0++) {
-      for (let x0 = x; x0 < width; x0++) {
+    for (let y0 = initY; y0 < height; y0++) {
+      for (let x0 = initX; x0 < width; x0++) {
         this.spr(mapArray[y0][x0], x1 + x0 * tileSize, y1 + y0 * tileSize);
       }
     }
