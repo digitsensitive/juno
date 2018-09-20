@@ -16,6 +16,7 @@ export declare class API {
     private palette;
     private images;
     private mapData;
+    private mapAdjustments;
     private spriteSize;
     private tileSize;
     private passedTicks;

@@ -16,6 +16,7 @@ class API {
         this.inputs = inputs;
         this.images = new Map();
         this.mapData = [];
+        this.mapAdjustments = { x: 0, y: 0 };
         this.passedTicks = 0;
     }
     /********************************************************************
@@ -399,13 +400,17 @@ class API {
         let numberHorizontalTiles = this.mapData[0].layers[0].width;
         let width = w || numberHorizontalTiles;
         let height = h || numberVerticalTiles;
-        let initX = x || 0;
-        let initY = y || 0;
+        this.mapAdjustments.x = x || 0;
+        this.mapAdjustments.y = y || 0;
         let x1 = sx || 0;
         let y1 = sy || 0;
-        for (let y0 = initY; y0 < height; y0++) {
-            for (let x0 = initX; x0 < width; x0++) {
-                this.spr(mapArray[y0][x0], x1 + x0 * tileSize, y1 + y0 * tileSize);
+        // evaluate runtime errors
+        if (this.mapAdjustments.x < 0 || this.mapAdjustments.y < 0) {
+            throw new RangeError("map(): Starting tile cannot be negative!. ");
+        }
+        for (let y0 = this.mapAdjustments.y; y0 < height; y0++) {
+            for (let x0 = this.mapAdjustments.x; x0 < width; x0++) {
+                this.spr(mapArray[y0][x0], x1 + (x0 - this.mapAdjustments.x) * tileSize, y1 + (y0 - this.mapAdjustments.y) * tileSize);
             }
         }
     }
@@ -418,8 +423,8 @@ class API {
     mget(x, y) {
         // get the actual coordinates. Depends on the tile size.
         // Use of floor to round downward to its nearest integer
-        let x0 = Math.floor(x / this.tileSize);
-        let y0 = Math.floor(y / this.tileSize);
+        let x0 = Math.floor(x / this.tileSize) + this.mapAdjustments.x;
+        let y0 = Math.floor(y / this.tileSize) + this.mapAdjustments.y;
         // evaluate runtime errors
         if (x0 < 0 ||
             x0 > this.mapData[0].layers[0].width - 1 ||
