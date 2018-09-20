@@ -159,12 +159,14 @@ export declare class API {
     private parseJSONDataIntoObject;
     /********************************************************************
      * Draw map on the screen.
-     * @param x [the x coordinate to draw the map to]
-     * @param y [the y coordinate to draw the map to]
+     * @param x  [starting tile on x coordinate]
+     * @param y  [starting tile on y coordinate]
      * @param w  [number of tiles to draw to the width]
      * @param h  [number of tiles to draw to the height]
+     * @param sx [the x coordinate to draw the map to]
+     * @param sy [the y coordinate to draw the map to]
      ********************************************************************/
-    map(x?: number, y?: number, w?: number, h?: number): void;
+    map(x?: number, y?: number, w?: number, h?: number, sx?: number, sy?: number): void;
     /********************************************************************
      * Get the map tile index at a specific 2D coordinate.
      * @param  x [the x coordinate of the tile]

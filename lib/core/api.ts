@@ -464,23 +464,32 @@ export class API {
 
   /********************************************************************
    * Draw map on the screen.
-   * @param x [the x coordinate to draw the map to]
-   * @param y [the y coordinate to draw the map to]
+   * @param x  [starting tile on x coordinate]
+   * @param y  [starting tile on y coordinate]
    * @param w  [number of tiles to draw to the width]
    * @param h  [number of tiles to draw to the height]
+   * @param sx [the x coordinate to draw the map to]
+   * @param sy [the y coordinate to draw the map to]
    ********************************************************************/
-  public map(x?: number, y?: number, w?: number, h?: number): void {
+  public map(
+    x?: number,
+    y?: number,
+    w?: number,
+    h?: number,
+    sx?: number,
+    sy?: number
+  ): void {
     let mapArray = this.mapData[0].layers[0].data;
     let tileSize = this.mapData[0].tileHeight;
     let numberVerticalTiles = this.mapData[0].layers[0].height;
     let numberHorizontalTiles = this.mapData[0].layers[0].width;
     let width = w || numberHorizontalTiles;
     let height = h || numberVerticalTiles;
-    let x1 = x || 0;
-    let y1 = y || 0;
+    let x1 = sx || 0;
+    let y1 = sy || 0;
 
-    for (let y0 = 0; y0 < height; y0++) {
-      for (let x0 = 0; x0 < width; x0++) {
+    for (let y0 = y; y0 < height; y0++) {
+      for (let x0 = x; x0 < width; x0++) {
         this.spr(mapArray[y0][x0], x1 + x0 * tileSize, y1 + y0 * tileSize);
       }
     }
