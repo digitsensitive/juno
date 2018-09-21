@@ -20,6 +20,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.0.XX] - XXXX-XX-XX
 
 ### Changes
+- New API function `mobj()` *[Tested: XXXX-XX-XX, digitsensitive]*
+- `parseJSONDataIntoObject` parses objects now *[Tested: XXXX-XX-XX, digitsensitive]*
 - Bugfix in `mget()` *[Tested: 2018-09-19, digitsensitive]*
 - Add starting x and y position of tiles in `map()` *[Tested: 2018-09-20, digitsensitive]*
 

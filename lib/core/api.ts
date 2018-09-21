@@ -13,7 +13,8 @@ import { Input } from "./input";
 import {
   ITiledMapJson,
   ILayer,
-  ITileset
+  ITileset,
+  IObject
 } from "../interfaces/tiled-map-json.interface";
 import { IMouse } from "../interfaces/mouse.interface";
 import { KEY } from "../enums/key.enum";
@@ -429,6 +430,19 @@ export class API {
       }
       layer.data = layerData;
 
+      let obj = [];
+      let objLength = data.layers[i].objects.length;
+      for (let j = 0; j < objLength; j++) {
+        let object: IObject = {} as IObject;
+        object.name = data.layers[i].objects[j].name;
+        object.x = data.layers[i].objects[j].x;
+        object.y = data.layers[i].objects[j].y;
+        object.height = data.layers[i].objects[j].height;
+        object.width = data.layers[i].objects[j].width;
+        obj.push(object);
+      }
+      layer.objects = obj;
+
       layer.visible = data.layers[i].visible;
       layer.opacity = data.layers[i].opacity;
       layer.x = data.layers[i].x;
@@ -520,6 +534,8 @@ export class API {
     let y0 = Math.floor(y / this.tileSize) + this.mapAdjustments.y;
 
     // evaluate runtime errors
+    // math.floor rounds down f.e. x = 0.99 to 0 -> means < 0 not allowed
+    // width & height must than be corrected with (-1) since we start from 0
     if (
       x0 < 0 ||
       x0 > this.mapData[0].layers[0].width - 1 ||
@@ -557,6 +573,14 @@ export class API {
     }
 
     this.mapData[0].layers[0].data[y][x] = id;
+  }
+
+  private mobj(): void {
+    let obj = this.mapData[0].layers[0].objects;
+    let objLength = this.mapData[0].layers[0].objects.length;
+    for (let i = 0; i < objLength; i++) {
+      this.spr(26, obj[i].x, obj[i].y);
+    }
   }
 
   /********************************************************************

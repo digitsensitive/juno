@@ -182,6 +182,7 @@ export declare class API {
      * @param y [the y position of the tile to set]
      ********************************************************************/
     mset(id: number, x: number, y: number): void;
+    private mobj;
     /********************************************************************
      * Create a sprite from spritesheet.
      * @param s  [the choosen sprite]

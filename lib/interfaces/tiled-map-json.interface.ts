@@ -11,10 +11,19 @@ export interface ITileset {
   tileProperties: any;
 }
 
+export interface IObject {
+  name: string;
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+}
+
 export interface ILayer {
   name: string;
   type: string;
   data: number[][];
+  objects: IObject[];
   height: number;
   width: number;
   visible: boolean;
