@@ -578,8 +578,8 @@ export class API {
   }
 
   public mobj(): void {
-    let obj = this.mapData[0].layers[0].objects;
-    let objLength = this.mapData[0].layers[0].objects.length;
+    let obj = this.mapData[0].layers[1].objects;
+    let objLength = this.mapData[0].layers[1].objects.length;
     for (let i = 0; i < objLength; i++) {
       this.spr(26, obj[i].x, obj[i].y);
     }
