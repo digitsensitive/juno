@@ -356,18 +356,20 @@ class API {
                 }
             }
             layer.data = layerData;
-            let obj = [];
-            let objLength = data.layers[i].objects.length;
-            for (let j = 0; j < objLength; j++) {
-                let object = {};
-                object.name = data.layers[i].objects[j].name;
-                object.x = data.layers[i].objects[j].x;
-                object.y = data.layers[i].objects[j].y;
-                object.height = data.layers[i].objects[j].height;
-                object.width = data.layers[i].objects[j].width;
-                obj.push(object);
+            if (data.layers[i].objects !== undefined) {
+                let obj = [];
+                let objLength = data.layers[i].objects.length;
+                for (let j = 0; j < objLength; j++) {
+                    let object = {};
+                    object.name = data.layers[i].objects[j].name;
+                    object.x = data.layers[i].objects[j].x;
+                    object.y = data.layers[i].objects[j].y;
+                    object.height = data.layers[i].objects[j].height;
+                    object.width = data.layers[i].objects[j].width;
+                    obj.push(object);
+                }
+                layer.objects = obj;
             }
-            layer.objects = obj;
             layer.visible = data.layers[i].visible;
             layer.opacity = data.layers[i].opacity;
             layer.x = data.layers[i].x;

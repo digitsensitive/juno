@@ -430,18 +430,20 @@ export class API {
       }
       layer.data = layerData;
 
-      let obj = [];
-      let objLength = data.layers[i].objects.length;
-      for (let j = 0; j < objLength; j++) {
-        let object: IObject = {} as IObject;
-        object.name = data.layers[i].objects[j].name;
-        object.x = data.layers[i].objects[j].x;
-        object.y = data.layers[i].objects[j].y;
-        object.height = data.layers[i].objects[j].height;
-        object.width = data.layers[i].objects[j].width;
-        obj.push(object);
+      if (data.layers[i].objects !== undefined) {
+        let obj = [];
+        let objLength = data.layers[i].objects.length;
+        for (let j = 0; j < objLength; j++) {
+          let object: IObject = {} as IObject;
+          object.name = data.layers[i].objects[j].name;
+          object.x = data.layers[i].objects[j].x;
+          object.y = data.layers[i].objects[j].y;
+          object.height = data.layers[i].objects[j].height;
+          object.width = data.layers[i].objects[j].width;
+          obj.push(object);
+        }
+        layer.objects = obj;
       }
-      layer.objects = obj;
 
       layer.visible = data.layers[i].visible;
       layer.opacity = data.layers[i].opacity;
@@ -575,7 +577,7 @@ export class API {
     this.mapData[0].layers[0].data[y][x] = id;
   }
 
-  private mobj(): void {
+  public mobj(): void {
     let obj = this.mapData[0].layers[0].objects;
     let objLength = this.mapData[0].layers[0].objects.length;
     for (let i = 0; i < objLength; i++) {
