@@ -92,11 +92,11 @@ export class Matrix3D {
   }
 
   /**
-   * Get a entry in the Matrix3D at the given position.
-   * @param m
+   * Get specific entry in the Matrix3D at the given position.
    * @param n
+   * @param m
    */
-  public getEntryAt(m: number, n: number): number {
+  public getEntryAt(n: number, m: number): number {
     if (this.isValidPosition(n, m)) {
       return this.entries[n][m];
     }
@@ -142,7 +142,7 @@ export class Matrix3D {
   public add(matrix: Matrix3D): void {
     for (let n = 0; n < 3; n++) {
       for (let m = 0; m < 3; m++) {
-        this.entries[n][m] += matrix.getEntryAt(m, n);
+        this.entries[n][m] += matrix.getEntryAt(n, m);
       }
     }
   }
@@ -163,7 +163,7 @@ export class Matrix3D {
   public subtract(matrix: Matrix3D): void {
     for (let n = 0; n < 3; n++) {
       for (let m = 0; m < 3; m++) {
-        this.entries[n][m] -= matrix.getEntryAt(m, n);
+        this.entries[n][m] -= matrix.getEntryAt(n, m);
       }
     }
   }
