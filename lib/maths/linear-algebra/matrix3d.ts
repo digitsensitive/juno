@@ -142,11 +142,11 @@ export class Matrix3D {
 
   /**
    * Returns true if entry in the Matrix3D exist at the given position.
-   * @param m
    * @param n
+   * @param m
    */
-  private isValidPosition(m: number, n: number): boolean {
-    if (m >= 0 && m <= 2 && n >= 0 && n <= 2) {
+  private isValidPosition(n: number, m: number): boolean {
+    if (n >= 0 && n <= 2 && m >= 0 && m <= 2) {
       return true;
     }
   }
