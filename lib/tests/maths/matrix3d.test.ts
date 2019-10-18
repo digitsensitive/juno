@@ -142,6 +142,20 @@ test("multiplyMatrix", () => {
   expect(m3.getEntryAt(2, 2)).toBe(28);
 });
 
+test("multiplyVector", () => {
+  // init matrix
+  let m = new Maths.Matrix3D();
+  m.initWithNumbers(6, 2, 4, 2, 4, 3, 1, 6, 7);
+
+  // do the multiplication
+  let v = m.multiplyVector(new Maths.Vector(1, 0, 0));
+
+  // evaluate the result
+  expect(v.getX()).toBe(6);
+  expect(v.getY()).toBe(2);
+  expect(v.getZ()).toBe(1);
+});
+
 test("multiplyByScalar", () => {
   // init matrix
   let m = new Maths.Matrix3D();

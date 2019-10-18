@@ -246,20 +246,29 @@ export class Matrix3D {
   }
 
   /**
-   * Multiply this Matrix3D with a Vector3D.
+   * Multiply this Matrix3D with a Vector.
    * ```typescript
    * let m = new Maths.Matrix3D();
    * m.initWithNumbers(6, 2, 4, 2, 4, 3, 1, 6, 7);
-   * m.getEntries();
-   * // => [ [ 6, 2, 4 ], [ 2, 4, 3 ], [ 1, 6, 7 ] ]
-   * let v = new Maths.Vector(1, 0, 0);
+   * let v = m.multiplyVector(new Maths.Vector(1, 0, 0));
    * v.toString();
+   * // => x: 6, y: 2, z: 1
    * ```
    * @param matrix
    */
-  public multiplyVector3D(vector: Vector): Vector {
-    let newVector3D = new Vector();
-    return newVector3D;
+  public multiplyVector(vector: Vector): Vector {
+    let newVector = new Vector(
+      this.getEntryAt(0, 0) * vector.getX() +
+        this.getEntryAt(0, 1) * vector.getY() +
+        this.getEntryAt(0, 2) * vector.getZ(),
+      this.getEntryAt(1, 0) * vector.getX() +
+        this.getEntryAt(1, 1) * vector.getY() +
+        this.getEntryAt(1, 2) * vector.getZ(),
+      this.getEntryAt(2, 0) * vector.getX() +
+        this.getEntryAt(2, 1) * vector.getY() +
+        this.getEntryAt(2, 2) * vector.getZ()
+    );
+    return newVector;
   }
 
   /**
