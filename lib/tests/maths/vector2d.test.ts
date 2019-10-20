@@ -395,6 +395,66 @@ test("normalize", () => {
   expect(v.toString()).toBe("x: 0.9805806756909202, y: 0.19611613513818404");
 });
 
+test("limit", () => {
+  // init vector
+  let v = new Maths.Vector2D(4, 3);
+
+  // set limit
+  v.limit(2, 0.9);
+
+  // evaluate the result
+  expect(v.toString()).toBe("x: 3.6, y: 2.7");
+});
+
+test("randomize", () => {
+  // init vector
+  let v = new Maths.Vector2D();
+
+  // randomize
+  v.randomize(new Maths.Vector2D(8, 4), new Maths.Vector2D(5, 2));
+
+  // evaluate the result
+  expect(v.getX()).toBeGreaterThanOrEqual(5);
+  expect(v.getX()).toBeLessThanOrEqual(8);
+  expect(v.getY()).toBeGreaterThanOrEqual(2);
+  expect(v.getY()).toBeLessThanOrEqual(4);
+});
+
+test("randomizeX", () => {
+  // init vector
+  let v = new Maths.Vector2D();
+
+  // randomize
+  v.randomizeX(new Maths.Vector2D(8, 4), new Maths.Vector2D(5, 2));
+
+  // evaluate the result
+  expect(v.getX()).toBeGreaterThanOrEqual(5);
+  expect(v.getX()).toBeLessThanOrEqual(8);
+});
+
+test("randomizeY", () => {
+  // init vector
+  let v = new Maths.Vector2D();
+
+  // randomize
+  v.randomizeY(new Maths.Vector2D(8, 4), new Maths.Vector2D(7, 2));
+
+  // evaluate the result
+  expect(v.getY()).toBeGreaterThanOrEqual(2);
+  expect(v.getY()).toBeLessThanOrEqual(4);
+});
+
+test("unfloat", () => {
+  // init vector
+  let v = new Maths.Vector2D(4.2, 2.9);
+
+  // unfloat
+  v.unfloat();
+
+  // evaluate the result
+  expect(v.toString()).toBe("x: 4, y: 3");
+});
+
 test("toString", () => {
   // init vector
   let v = new Maths.Vector2D(4, 2);

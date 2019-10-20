@@ -5,6 +5,8 @@
  * @license      {@link https://github.com/digitsensitive/juno/blob/master/LICENSE.md | MIT License}
  */
 
+import { random } from "../random/random";
+
 /**
  * A basic euclidean vector (also called geometric or spatial vector) class.
  * A vector is a geometric object that has magnitude (or length) and direction.
@@ -584,6 +586,86 @@ export class Vector2D {
        */
       this.divideScalar(magnitude);
     }
+  }
+
+  /**
+   * Multiply dimensions of this 2D vector with the factor if greater than max.
+   * ```typescript
+   * let v = new Maths.Vector2D(4, 3);
+   * v.limit(2, 0.9);
+   * v.toString();
+   * // => x: 3.6, y: 2.7
+   * ```
+   * @param max
+   * @param factor
+   */
+  public limit(max: number, factor: number): void {
+    if (Math.abs(this.x) > max) {
+      this.x *= factor;
+    }
+    if (Math.abs(this.y) > max) {
+      this.y *= factor;
+    }
+  }
+
+  /**
+   * Randomize both dimensions of this 2D vector
+   * with a value between two 2D vectors.
+   * ```typescript
+   * let v = new Maths.Vector2D();
+   * v.randomize(new Maths.Vector2D(8, 4), new Maths.Vector2D(5, 2));
+   * ```
+   * @param topVector
+   * @param bottomVector
+   */
+  public randomize(topVector: Vector2D, bottomVector: Vector2D): void {
+    this.randomizeX(topVector, bottomVector);
+    this.randomizeY(topVector, bottomVector);
+  }
+
+  /**
+   * Randomize the x dimension of this 2D vector
+   * with a value between two 2D vectors.
+   * ```typescript
+   * let v = new Maths.Vector2D();
+   * v.randomizeX(new Maths.Vector2D(8, 4), new Maths.Vector2D(5, 2));
+   * ```
+   * @param topVector
+   * @param bottomVector
+   */
+  public randomizeX(topVector: Vector2D, bottomVector: Vector2D): void {
+    var min = Math.min(topVector.x, bottomVector.x);
+    var max = Math.max(topVector.x, bottomVector.x);
+    this.x = random(min, max);
+  }
+
+  /**
+   * Randomize the y dimension of this 2D vector
+   * with a value between two 2D vectors.
+   * ```typescript
+   * let v = new Maths.Vector2D();
+   * v.randomizeY(new Maths.Vector2D(8, 4), new Maths.Vector2D(7, 2));
+   * ```
+   * @param topVector
+   * @param bottomVector
+   */
+  public randomizeY(topVector: Vector2D, bottomVector: Vector2D): void {
+    var min = Math.min(topVector.y, bottomVector.y);
+    var max = Math.max(topVector.y, bottomVector.y);
+    this.y = random(min, max);
+  }
+
+  /**
+   * Round both dimensions of this 2D vector to an integer value.
+   * ```typescript
+   * let v = new Maths.Vector2D(4.2, 2.9);
+   * v.unfloat();
+   * // => x: 4, y: 3
+   * ```
+   */
+  public unfloat(): void {
+    this.x = Math.round(this.x);
+    this.y = Math.round(this.y);
   }
 
   /**
