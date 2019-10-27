@@ -162,7 +162,7 @@ function draws your masterpieces.
 Make a call of the `load()` function in your `init()`. The path is relative
 to your root folder. You can then draw your sprites in the `render()` function.
 
-```
+```typescript
 init(): void {
   this.api.load("sprites", "./src/assets/sprites.png", 8);
 }
@@ -178,7 +178,7 @@ render(): void {
 
 Similar as loading your sprites. Be sure to load your tiles before.
 
-```
+```typescript
 init(): void {
   this.api.load("tiles", "./assets/tiles.png", 8);
   this.api.load("map", "./assets/map.json", 8);
@@ -196,7 +196,7 @@ render(): void {
 One palette comprises a total of 16 colours. By default, a predefined palette
 is loaded. Your own palette can be loaded using a chain of hex strings (6 x 16 = 96 characters).
 
-```
+```typescript
 init(): void {
   this.api.ipal(1a1c2c572956b14156ee7b58ffd079a0f07238b86e276e7b29366f405bd04fa4f786ecf8f4f4f493b6c1557185324056);
 }
