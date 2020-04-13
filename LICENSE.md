@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2018-2019 Digitsensitive <digit.sensitivee@gmail.com>
+Copyright (c) 2018-2020 Digitsensitive <digit.sensitivee@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
