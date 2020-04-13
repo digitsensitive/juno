@@ -15,24 +15,13 @@
  *
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
-import { API } from "./api";
+import { API } from "./api/api";
 import { IGameConfig } from "../interfaces/game-config.interface";
-import { IState } from "../interfaces/state.interface";
 export declare class Game {
-    private canvas;
     private renderer;
-    private scaleFactor;
     api: API;
     private gameLoop;
-    private states;
     private inputs;
     constructor(config: IGameConfig);
-    /********************************************************************
-     * This function adds a game state.
-     * You have to define a name for the state and
-     * send the reference to the current state.
-     * @param name      [the name of the state]
-     * @param state     [the reference to the state]
-     ********************************************************************/
-    addState(state: IState): void;
+    startLoop(): void;
 }

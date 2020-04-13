@@ -1,8 +1,14 @@
-{
+{  
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
     "declaration": true,
     "outDir": "./dist"
+  },
+  "typedocOptions": {
+    "mode": "file",
+    "name": "Juno",
+    "out": "docs",
+    "theme": "default"
   }
 }

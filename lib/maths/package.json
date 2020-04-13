@@ -1,0 +1,20 @@
+{
+  "name": "@juno/maths",
+  "version": "1.0.0",
+  "description": "Juno is a clean and lightweight 2D game framework written in TypeScript for making tiny HTML5 Games. ",
+  "author": "digitsensitive <digit.sensitivee@gmail.com>",
+  "main": "dist/maths.js",
+  "types": "dist/maths.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "3.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digitsensitive/juno.git"
+  },
+  "license": "MIT"
+}

@@ -1,6 +1,6 @@
 {
   "name": "juno-console",
-  "version": "0.0.60",
+  "version": "1.0.0",
   "description": "Juno is a clean and lightweight 2D game framework written in TypeScript for making tiny HTML5 Games. ",
   "keywords": [
     "Juno",
@@ -16,14 +16,21 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest",
+    "generate-documentation": "typedoc",
+    "setup:maths": "cd lib/maths && yarn install && tsc"
   },
   "dependencies": {
-    "eventemitter3": "^3.1.0",
-    "performance-now": "^2.1.0"
+    "eventemitter3": "4.0.0",
+    "performance-now": "2.1.0",
+    "typedoc": "0.17.4"
   },
   "devDependencies": {
-    "typescript": "^2.9.2"
+    "@types/jest": "25.2.1",
+    "jest": "25.3.0",
+    "ts-jest": "25.3.1",
+    "typescript": "3.8.3"
   },
   "repository": {
     "type": "git",
@@ -33,6 +40,5 @@
     "name": "digitsensitive",
     "email": "digit.sensitivee@gmail.com"
   },
-  "license": "MIT",
-  "private": false
+  "license": "MIT"
 }

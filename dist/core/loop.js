@@ -26,7 +26,7 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 const eventemitter3_1 = require("eventemitter3");
-const performance_now_1 = require("../polyfills/performance.now");
+const performance_now_1 = require("./polyfills/performance.now");
 class GameLoop extends eventemitter3_1.EventEmitter {
     constructor() {
         super();
@@ -38,7 +38,7 @@ class GameLoop extends eventemitter3_1.EventEmitter {
      * Start the game loop
      * @param state [name of the state to start]
      */
-    start(state) {
+    start() {
         this.init();
         this.paused = false;
         this.currentTime = performance_now_1.ElapsedTime();

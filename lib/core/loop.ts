@@ -25,7 +25,7 @@
  */
 
 import { EventEmitter } from "eventemitter3";
-import { ElapsedTime } from "../polyfills/performance.now";
+import { ElapsedTime } from "./polyfills/performance.now";
 
 export class GameLoop extends EventEmitter {
   private accumulator: number;
@@ -45,7 +45,7 @@ export class GameLoop extends EventEmitter {
    * Start the game loop
    * @param state [name of the state to start]
    */
-  public start(state: string): void {
+  public start(): void {
     this.init();
     this.paused = false;
     this.currentTime = ElapsedTime();

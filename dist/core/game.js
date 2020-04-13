@@ -17,20 +17,23 @@
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-const api_1 = require("./api");
+const api_1 = require("./api/api");
 const loop_1 = require("./loop");
-const input_1 = require("./input");
+const input_1 = require("./input/input");
+const canvas_renderer_1 = require("./renderer/canvas-renderer");
 class Game {
     constructor(config) {
-        /**
-         * Init canvas
-         */
-        this.canvas = document.createElement("canvas");
-        document.getElementById(config.name).appendChild(this.canvas);
-        this.canvas.style.cursor = "none";
-        /**
-         * Init CSS properties
-         */
+        // init renderer
+        this.renderer = new canvas_renderer_1.CanvasRenderer({
+            canvas: {
+                name: config.name,
+                width: config.width,
+                height: config.height,
+                scale: config.scale || 1,
+                fullscreen: config.fullscreen
+            }
+        });
+        // init css properties
         if (config.css === undefined) {
             config.css = {};
         }
@@ -58,78 +61,33 @@ class Game {
         document
             .getElementById(config.name)
             .style.setProperty("--border-radius", config.css.borderRadius);
-        /**
-         * Init renderer
-         */
-        this.renderer = this.canvas.getContext("2d");
-        this.renderer.imageSmoothingEnabled = false;
-        this.scaleFactor = config.scale || 1;
-        this.renderer.scale(this.scaleFactor, this.scaleFactor);
-        /**
-         * Setup canvas
-         */
-        this.canvas.width =
-            config.width * this.scaleFactor || 64 * this.scaleFactor;
-        this.canvas.height =
-            config.height * this.scaleFactor || 64 * this.scaleFactor;
-        if (config.fullscreen) {
-            this.canvas.width = window.innerWidth;
-            this.canvas.height = window.innerHeight;
-        }
-        /**
-         * Init instance of game loop
-         */
-        this.gameLoop = new loop_1.GameLoop();
-        /**
-         * Set Input
-         */
+        // set input
         this.inputs = new input_1.Input({
-            canvas: this.canvas,
             renderer: this.renderer,
             options: {
-                scaleFactor: this.scaleFactor,
                 inputs: {
                     keyboard: config.input.keyboard !== undefined ? config.input.keyboard : true,
                     mouse: config.input.mouse !== undefined ? config.input.mouse : false
                 }
             }
         });
-        /**
-         * Init an API instance
-         */
-        this.api = new api_1.API({
-            canvas: this.canvas,
-            renderer: this.renderer,
-            options: { scaleFactor: this.scaleFactor }
-        }, this.inputs);
+        // init API instance
+        this.api = new api_1.API(this.renderer, this.inputs);
         this.api.ipal("1a1c2c572956b14156ee7b58ffd079a0f07238b86e276e7b29366f405bd04fa4f786ecf8f4f4f493b6c1557185324056");
-        /**
-         * Array with the game states
-         */
-        this.states = [];
     }
-    /********************************************************************
-     * This function adds a game state.
-     * You have to define a name for the state and
-     * send the reference to the current state.
-     * @param name      [the name of the state]
-     * @param state     [the reference to the state]
-     ********************************************************************/
-    addState(state) {
-        // add state to states array
-        this.states.push(state);
-        // register events for the state
+    startLoop() {
+        // init instance of game loop
+        this.gameLoop = new loop_1.GameLoop();
         this.gameLoop.on("init", function () {
-            state.instance.init();
-        }, state.instance);
+            this.init();
+        }, this);
         this.gameLoop.on("update", function (dt) {
-            state.instance.update(dt);
-        }, state.instance);
+            this.update(dt);
+        }, this);
         this.gameLoop.on("render", function (dt) {
-            state.instance.render(dt);
-        }, state.instance);
-        // start the game loop with this state
-        this.gameLoop.start(state.name);
+            this.render(dt);
+        }, this);
+        this.gameLoop.start();
     }
 }
 exports.Game = Game;

@@ -1,0 +1,366 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Juno</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">Juno</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> Juno</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<p align="center">
+					<img width=100% src="https://github.com/digitsensitive/juno/blob/master/assets/github/juno.png">
+				</p>
+				<p><a href="https://david-dm.org/digitsensitive/juno"><img src="https://david-dm.org/digitsensitive/juno/status.svg" alt="dependencies status badge"></a>
+					<a href="https://github.com/digitsensitive/juno/issues"><img src="https://img.shields.io/github/issues/digitsensitive/juno.svg" alt="GitHub issues"></a>
+					<a href="https://github.com/digitsensitive/juno/stargazers"><img src="https://img.shields.io/github/stars/digitsensitive/juno.svg" alt="GitHub stars"></a>
+					<img src="https://img.shields.io/badge/contributions-welcome-orange.svg" alt="Contributions welcome">
+				<a href="https://github.com/digitsensitive/juno"><img src="https://img.shields.io/github/license/digitsensitive/juno.svg" alt="GitHub license"></a></p>
+				<p>Juno is a simple and lightweight 2D game framework written in TypeScript for
+					making tiny pixel style HTML5 Games. The structure of Juno is similar to that of
+					<a href="https://github.com/paladin-t/fantasy">fantasy consoles</a> with a simple API.
+				Creating prototypes has never been easier.</p>
+				<p>The framework is still in an early stage of development.</p>
+				<p>What are you waiting for? Start with Juno and create games in a nutshell!</p>
+				<div align="center">
+					<sub>Created with ❤︎ by <a href="https://github.com/digitsensitive">digitsensitive</a></sub>
+				</div>
+				<a href="#getting-started" id="getting-started" style="color: inherit; text-decoration: none;">
+					<h2>Getting started</h2>
+				</a>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h3>Installation</h3>
+				</a>
+				<pre><code class="language-sh">npm install juno-console --save
+yarn add juno-console
+bower install juno-console --save</code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<p>For a boilerplate and examples have a look at the
+				<a href="https://github.com/digitsensitive/juno-examples">Juno examples</a>.</p>
+				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
+					<h2>API</h2>
+				</a>
+				<p>For more details see comments in the code.</p>
+				<p><code>ipal</code></p>
+				<p>Init your own color palette.</p>
+				<p><code>cls</code></p>
+				<p>Clear the screen.</p>
+				<p><code>pix</code></p>
+				<p>Draw a pixel.</p>
+				<p><code>pget</code></p>
+				<p>Get pixel color index from 2D position.</p>
+				<p><code>load</code></p>
+				<p>Load your spritesheet.</p>
+				<p><code>spr</code></p>
+				<p>Add a sprite.</p>
+				<p><code>map</code></p>
+				<p>Load a Tilemap.</p>
+				<p><code>mget</code></p>
+				<p>Get map tile index.</p>
+				<p><code>mset</code></p>
+				<p>Set map tile index.</p>
+				<p><code>circ</code></p>
+				<p>Draw a filled circle.</p>
+				<p><code>circb</code></p>
+				<p>Draw a circle outline.</p>
+				<p><code>line</code></p>
+				<p>Draw a line.</p>
+				<p><code>rect</code></p>
+				<p>Draw a filled rect.</p>
+				<p><code>rectb</code></p>
+				<p>Draw a rectangle outline.</p>
+				<p><code>print</code></p>
+				<p>Draw some text.</p>
+				<p><code>trace</code></p>
+				<p>Trace a variable for it&#39;s value.</p>
+				<p><code>key</code></p>
+				<p>Check if a key is currently pressed.</p>
+				<p><code>keyp</code></p>
+				<p>Check if a key was pressed in the frame before (only once).</p>
+				<p><code>mouse</code></p>
+				<p>Get the mouse coordinates.</p>
+				<p><code>ggw</code></p>
+				<p>Get the game width.</p>
+				<p><code>ggh</code></p>
+				<p>Get the game height.</p>
+				<p><code>ticks</code></p>
+				<p>Get the ticks since start of the game.</p>
+				<p><code>rnd</code></p>
+				<p>Get a random number between min and max value.</p>
+				<p><code>crc</code></p>
+				<p>Simple circle-rectangle-collision.</p>
+				<p><code>rrc</code></p>
+				<p>Simple rectangle-rectangle collision.</p>
+				<p><code>anim</code></p>
+				<p>Animate your sprite.</p>
+				<a href="#faq" id="faq" style="color: inherit; text-decoration: none;">
+					<h2>FAQ</h2>
+				</a>
+				<p><strong>How is the basic setup?</strong></p>
+				<p>Have a look at the <a href="https://github.com/digitsensitive/juno-examples">Juno examples</a>.
+				You will find a boilerplate.</p>
+				<p>Basically, only three functions are required. The <code>init()</code> function can be used
+					to initiate the color palette, load the sprites or the json map file and define variables.
+					With the <code>update()</code> function parameters are adjusted and the <code>render()</code>
+				function draws your masterpieces.</p>
+				<p><strong>How do I load my sprites?</strong></p>
+				<p>Make a call of the <code>load()</code> function in your <code>init()</code>. The path is relative
+				to your root folder. You can then draw your sprites in the <code>render()</code> function.</p>
+				<pre><code>init(): <span class="hljs-built_in">void</span> {
+  <span class="hljs-keyword">this</span>.api.load(<span class="hljs-string">"sprites"</span>, <span class="hljs-string">"./src/assets/sprites.png"</span>, <span class="hljs-number">8</span>);
+}
+
+render(): <span class="hljs-built_in">void</span> {
+  <span class="hljs-keyword">this</span>.api.spr(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
+}</code></pre><blockquote>
+					<p>Be aware: Currently you can only load one sheet (spritesheet and Tileset together)</p>
+				</blockquote>
+				<p><strong>How do I load my JSON map?</strong></p>
+				<p>Similar as loading your sprites. Be sure to load your tiles before.</p>
+				<pre><code><span class="hljs-keyword">init</span>(): void {
+  <span class="hljs-keyword">this</span>.api.load(<span class="hljs-string">"tiles"</span>, <span class="hljs-string">"./assets/tiles.png"</span>, <span class="hljs-number">8</span>);
+  <span class="hljs-keyword">this</span>.api.load(<span class="hljs-string">"map"</span>, <span class="hljs-string">"./assets/map.json"</span>, <span class="hljs-number">8</span>);
+}
+
+render(): void {
+  <span class="hljs-keyword">this</span>.api.spr(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
+}</code></pre><blockquote>
+					<p>Be aware: Currently you can only load one sheet (spritesheet and Tileset together)</p>
+				</blockquote>
+				<p><strong>How do I load my own color palette?</strong></p>
+				<p>One palette comprises a total of 16 colours. By default, a predefined palette
+				is loaded. Your own palette can be loaded using a chain of hex strings (6 x 16 = 96 characters).</p>
+				<pre><code>init(): <span class="hljs-built_in">void</span> {
+  <span class="hljs-keyword">this</span>.api.ipal(<span class="hljs-number">1</span>a1c2c572956b14156ee7b58ffd079a0f07238b86e276e7b29366f405bd04fa4f786ecf8f4f4f493b6c1557185324056);
+}</code></pre><p><strong>OK, so I have chosen a color palette, but how do I get the colors into my graphics editor?</strong></p>
+				<p>The easiest way is to load the already defined
+					<a href="https://github.com/digitsensitive/juno-examples/tree/master/assets/swatches">.css swatch</a>
+				directly into your graphics editor. Et voilà!</p>
+				<a href="#changelog" id="changelog" style="color: inherit; text-decoration: none;">
+					<h2>Changelog</h2>
+				</a>
+				<p><a href="https://github.com/digitsensitive/juno/blob/master/CHANGELOG.md">Learn about the latest improvements</a></p>
+				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
+					<h2>Contributing</h2>
+				</a>
+				<p>Want to correct a bug, contribute some code, or improve the codes? Excellent! Let me know!</p>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
+				<p>This project is licensed under the MIT License - see the
+				<a href="https://github.com/digitsensitive/juno/blob/master/LICENSE.md">LICENSE.md</a> file for details.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/key.html" class="tsd-kind-icon">KEY</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/api.html" class="tsd-kind-icon">API</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/canvasrenderer.html" class="tsd-kind-icon">Canvas<wbr>Renderer</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/game.html" class="tsd-kind-icon">Game</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/gameloop.html" class="tsd-kind-icon">Game<wbr>Loop</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/input.html" class="tsd-kind-icon">Input</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/matrix.html" class="tsd-kind-icon">Matrix</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/matrix3d.html" class="tsd-kind-icon">Matrix3D</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/vector.html" class="tsd-kind-icon">Vector</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/vector2d.html" class="tsd-kind-icon">Vector2D</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icanvasrenderer.html" class="tsd-kind-icon">ICanvas<wbr>Renderer</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/igameconfig.html" class="tsd-kind-icon">IGame<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iinput.html" class="tsd-kind-icon">IInput</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ilayer.html" class="tsd-kind-icon">ILayer</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/imatrixconstructor.html" class="tsd-kind-icon">IMatrix<wbr>Constructor</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/imouse.html" class="tsd-kind-icon">IMouse</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/imousecoordinates.html" class="tsd-kind-icon">IMouse<wbr>Coordinates</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iobject.html" class="tsd-kind-icon">IObject</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/itiledmapjson.html" class="tsd-kind-icon">ITiled<wbr>Map<wbr>Json</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/itileset.html" class="tsd-kind-icon">ITileset</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#elapsedtime" class="tsd-kind-icon">Elapsed<wbr>Time</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#absnumber" class="tsd-kind-icon">abs<wbr>Number</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#vector2daddition" class="tsd-kind-icon">vector2DAddition</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#vector2dsubtraction" class="tsd-kind-icon">vector2DSubtraction</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

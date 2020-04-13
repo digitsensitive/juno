@@ -35,7 +35,7 @@ export declare class GameLoop extends EventEmitter {
      * Start the game loop
      * @param state [name of the state to start]
      */
-    start(state: string): void;
+    start(): void;
     /**
      * Execution of one frame (= tick).
      */
