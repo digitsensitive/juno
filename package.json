@@ -17,19 +17,19 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "jest",
+    "run-tests": "jest",
     "generate-documentation": "typedoc",
     "setup:maths": "cd lib/maths && yarn install && tsc"
   },
   "dependencies": {
     "eventemitter3": "4.0.0",
     "performance-now": "2.1.0",
-    "typedoc": "0.17.4"
+    "typedoc": "0.17.6"
   },
   "devDependencies": {
     "@types/jest": "25.2.1",
-    "jest": "25.3.0",
-    "ts-jest": "25.3.1",
+    "jest": "25.4.0",
+    "ts-jest": "25.4.0",
     "typescript": "3.8.3"
   },
   "repository": {

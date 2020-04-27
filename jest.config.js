@@ -1,6 +1,6 @@
 module.exports = {
-  roots: ["<rootDir>/lib"],
+  roots: ["<rootDir>/tests"],
   transform: {
-    "^.+\\.tsx?$": "ts-jest"
-  }
+    "^.+\\.tsx?$": "ts-jest",
+  },
 };

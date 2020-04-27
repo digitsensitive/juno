@@ -1,0 +1,8 @@
+{
+  "mode": "file",
+  "name": "Juno",
+  "out": "docs",
+  "theme": "default",
+  "includeVersion": true,
+  "hideGenerator": true
+}

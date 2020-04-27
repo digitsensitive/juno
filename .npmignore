@@ -1,10 +1,7 @@
-# OSX
-.DS_STORE
-
 # General
-dist
-node_modules
-yarn-error.log
+assets
+lib
+tests
 
 # Ignore IDE configuration files
 .idea/ 
