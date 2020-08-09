@@ -6,6 +6,7 @@
  * @license      {@link https://github.com/digitsensitive/juno/blob/master/LICENSE.md | MIT License}
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Vector = void 0;
 /**
  * UNFINISHED
  * https://github.com/maxkueng/victor/blob/master/build/victor.js

@@ -1,4 +1,4 @@
-import * as Maths from "../../maths/index";
+import * as Maths from "../../lib/maths/index";
 
 test("getRandomNumber", () => {
   // generate random numbers

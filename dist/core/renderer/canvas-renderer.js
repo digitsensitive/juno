@@ -1,11 +1,12 @@
 "use strict";
 /**
  * @author       Digitsensitive <digit.sensitivee@gmail.com>
- * @copyright    2018-2019 Digitsensitive
+ * @copyright    2018 - 2020 Digitsensitive
  * @description  Juno Core: Canvas Renderer
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CanvasRenderer = void 0;
 class CanvasRenderer {
     constructor(config) {
         this.canvas = document.createElement("canvas");
@@ -41,7 +42,7 @@ class CanvasRenderer {
             return;
         }
         // Render all the children from this container
-        container.getChildren().forEach(child => {
+        container.getChildren().forEach((child) => {
             // save the entire state of the canvas by pushing the current state onto a stack
             this.renderer.save();
             // render child

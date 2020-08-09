@@ -16,34 +16,33 @@
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
 
-import { API } from "./api/api";
+import { Graphics } from "./graphics/graphics";
 import { GameLoop } from "./loop";
 import { IGameConfig } from "../interfaces/game-config.interface";
 import { Input } from "./input/input";
-import { CanvasRenderer } from "./renderer/canvas-renderer";
+import { CanvasRenderer } from "./renderer/canvas/canvas-renderer";
 
 export class Game {
   // renderer
   private renderer: CanvasRenderer;
 
   // core juno game classes
-  public api: API;
+  public graphics: Graphics;
   private gameLoop: GameLoop;
   private inputs: Input;
 
   constructor(config: IGameConfig) {
     // init renderer
     this.renderer = new CanvasRenderer({
-      canvas: {
-        name: config.name,
-        width: config.width,
-        height: config.height,
-        scale: config.scale || 1,
-        fullscreen: config.fullscreen
-      }
+      name: config.name,
+      width: config.width,
+      height: config.height,
+      scale: config.scale || 1,
+      antialias: config.antialias || false,
+      fullscreen: config.fullscreen,
     });
 
-    // init css properties
+    /* init css properties
     if (config.css === undefined) {
       config.css = {};
     }
@@ -72,7 +71,7 @@ export class Game {
       .style.setProperty("--border-color", config.css.borderColor);
     document
       .getElementById(config.name)
-      .style.setProperty("--border-radius", config.css.borderRadius);
+      .style.setProperty("--border-radius", config.css.borderRadius);*/
 
     // set input
     this.inputs = new Input({
@@ -81,14 +80,14 @@ export class Game {
         inputs: {
           keyboard:
             config.input.keyboard !== undefined ? config.input.keyboard : true,
-          mouse: config.input.mouse !== undefined ? config.input.mouse : false
-        }
-      }
+          mouse: config.input.mouse !== undefined ? config.input.mouse : false,
+        },
+      },
     });
 
     // init API instance
-    this.api = new API(this.renderer, this.inputs);
-    this.api.ipal(
+    this.graphics = new Graphics(this.renderer, this.inputs);
+    this.graphics.ipal(
       "1a1c2c572956b14156ee7b58ffd079a0f07238b86e276e7b29366f405bd04fa4f786ecf8f4f4f493b6c1557185324056"
     );
   }
@@ -99,21 +98,21 @@ export class Game {
 
     this.gameLoop.on(
       "init",
-      function() {
+      function () {
         this.init();
       },
       this
     );
     this.gameLoop.on(
       "update",
-      function(dt) {
+      function (dt) {
         this.update(dt);
       },
       this
     );
     this.gameLoop.on(
       "render",
-      function(dt) {
+      function (dt) {
         this.render(dt);
       },
       this

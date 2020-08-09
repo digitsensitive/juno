@@ -6,6 +6,7 @@
  * @license      {@link https://github.com/digitsensitive/juno/blob/master/LICENSE.md | MIT License}
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.vector2DSubtraction = exports.vector2DAddition = void 0;
 const vector2d_1 = require("./vector2d");
 /**
  * Addition of two 2D Vectors.

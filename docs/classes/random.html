@@ -1,0 +1,483 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Random | Juno - v1.0.0</title>
+	<meta name="description" content="Documentation for Juno - v1.0.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Juno - v1.0.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="random.html">Random</a>
+				</li>
+			</ul>
+			<h1>Class Random</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Pseudorandom Number Generator (PRNG) class (Xorshift128+).
+							A shift/rotate-based linear transformation designed by Sebastiano Vigna
+						in collaboration with David Blackman.</p>
+					</div>
+					<p>PRNG references:
+						<a href="https://hackernoon.com/how-does-javascripts-math-random-generate-random-numbers-ef0de6a20131">https://hackernoon.com/how-does-javascripts-math-random-generate-random-numbers-ef0de6a20131</a>
+						<a href="https://v8.dev/blog/math-random">https://v8.dev/blog/math-random</a>
+						<a href="https://blog.abelotech.com/posts/generate-random-values-nodejs-javascript">https://blog.abelotech.com/posts/generate-random-values-nodejs-javascript</a>
+					<a href="https://en.wikipedia.org/wiki/List_of_random_number_generators">https://en.wikipedia.org/wiki/List_of_random_number_generators</a></p>
+					<p>Bitwise operations references:
+					<a href="https://github.com/FlorianWendelborn/bitwise">https://github.com/FlorianWendelborn/bitwise</a></p>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">Random</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="random.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="random.html#n" class="tsd-kind-icon">n</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="random.html#state0" class="tsd-kind-icon">state0</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="random.html#state1" class="tsd-kind-icon">state1</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="random.html#hash" class="tsd-kind-icon">hash</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="random.html#leftshift" class="tsd-kind-icon">left<wbr>Shift</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="random.html#rightshift" class="tsd-kind-icon">right<wbr>Shift</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="random.html#sow" class="tsd-kind-icon">sow</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="random.html#xor" class="tsd-kind-icon">xor</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="random.html#xorshift128plus" class="tsd-kind-icon">xorshift128plus</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Random<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="random.html" class="tsd-signature-type">Random</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/digitsensitive/juno/blob/ecc297a/lib/maths/src/random/pseudorandom-number-generator.ts#L26">lib/maths/src/random/pseudorandom-number-generator.ts:26</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="random.html" class="tsd-signature-type">Random</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="n" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> n</h3>
+					<div class="tsd-signature tsd-kind-icon">n<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/digitsensitive/juno/blob/ecc297a/lib/maths/src/random/pseudorandom-number-generator.ts#L26">lib/maths/src/random/pseudorandom-number-generator.ts:26</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="state0" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> state0</h3>
+					<div class="tsd-signature tsd-kind-icon">state0<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/digitsensitive/juno/blob/ecc297a/lib/maths/src/random/pseudorandom-number-generator.ts#L24">lib/maths/src/random/pseudorandom-number-generator.ts:24</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="state1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> state1</h3>
+					<div class="tsd-signature tsd-kind-icon">state1<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/digitsensitive/juno/blob/ecc297a/lib/maths/src/random/pseudorandom-number-generator.ts#L25">lib/maths/src/random/pseudorandom-number-generator.ts:25</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="hash" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> hash</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">hash<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/digitsensitive/juno/blob/ecc297a/lib/maths/src/random/pseudorandom-number-generator.ts#L60">lib/maths/src/random/pseudorandom-number-generator.ts:60</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>data: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="leftshift" class="tsd-anchor"></a>
+					<h3>left<wbr>Shift</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">left<wbr>Shift<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span>, shift<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/digitsensitive/juno/blob/ecc297a/lib/maths/src/random/pseudorandom-number-generator.ts#L82">lib/maths/src/random/pseudorandom-number-generator.ts:82</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>shift: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="rightshift" class="tsd-anchor"></a>
+					<h3>right<wbr>Shift</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">right<wbr>Shift<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span>, shift<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/digitsensitive/juno/blob/ecc297a/lib/maths/src/random/pseudorandom-number-generator.ts#L105">lib/maths/src/random/pseudorandom-number-generator.ts:105</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>shift: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="sow" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> sow</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">sow<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/digitsensitive/juno/blob/ecc297a/lib/maths/src/random/pseudorandom-number-generator.ts#L53">lib/maths/src/random/pseudorandom-number-generator.ts:53</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="xor" class="tsd-anchor"></a>
+					<h3>xor</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">xor<span class="tsd-signature-symbol">(</span>value1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span>, value2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/digitsensitive/juno/blob/ecc297a/lib/maths/src/random/pseudorandom-number-generator.ts#L128">lib/maths/src/random/pseudorandom-number-generator.ts:128</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value1: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>value2: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="xorshift128plus" class="tsd-anchor"></a>
+					<h3>xorshift128plus</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">xorshift128plus<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/digitsensitive/juno/blob/ecc297a/lib/maths/src/random/pseudorandom-number-generator.ts#L39">lib/maths/src/random/pseudorandom-number-generator.ts:39</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="../enums/key.html" class="tsd-kind-icon">KEY</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="api.html" class="tsd-kind-icon">API</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="canvasrenderer.html" class="tsd-kind-icon">Canvas<wbr>Renderer</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="game.html" class="tsd-kind-icon">Game</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="gameloop.html" class="tsd-kind-icon">Game<wbr>Loop</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="input.html" class="tsd-kind-icon">Input</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="matrix.html" class="tsd-kind-icon">Matrix</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="matrix3d.html" class="tsd-kind-icon">Matrix3D</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class">
+						<a href="random.html" class="tsd-kind-icon">Random</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="random.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="random.html#n" class="tsd-kind-icon">n</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="random.html#state0" class="tsd-kind-icon">state0</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="random.html#state1" class="tsd-kind-icon">state1</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="random.html#hash" class="tsd-kind-icon">hash</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="random.html#leftshift" class="tsd-kind-icon">left<wbr>Shift</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="random.html#rightshift" class="tsd-kind-icon">right<wbr>Shift</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="random.html#sow" class="tsd-kind-icon">sow</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="random.html#xor" class="tsd-kind-icon">xor</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="random.html#xorshift128plus" class="tsd-kind-icon">xorshift128plus</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="vector.html" class="tsd-kind-icon">Vector</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="vector2d.html" class="tsd-kind-icon">Vector2D</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/icanvasrenderer.html" class="tsd-kind-icon">ICanvas<wbr>Renderer</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/igameconfig.html" class="tsd-kind-icon">IGame<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/iinput.html" class="tsd-kind-icon">IInput</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/ilayer.html" class="tsd-kind-icon">ILayer</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/imatrixconstructor.html" class="tsd-kind-icon">IMatrix<wbr>Constructor</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/imouse.html" class="tsd-kind-icon">IMouse</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/imousecoordinates.html" class="tsd-kind-icon">IMouse<wbr>Coordinates</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/iobject.html" class="tsd-kind-icon">IObject</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/itiledmapjson.html" class="tsd-kind-icon">ITiled<wbr>Map<wbr>Json</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/itileset.html" class="tsd-kind-icon">ITileset</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#elapsedtime" class="tsd-kind-icon">Elapsed<wbr>Time</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#absnumber" class="tsd-kind-icon">abs<wbr>Number</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#degreetoradians" class="tsd-kind-icon">degree<wbr>ToRadians</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#getrandomfloat" class="tsd-kind-icon">get<wbr>Random<wbr>Float</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#getrandomint" class="tsd-kind-icon">get<wbr>Random<wbr>Int</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#getrandomnumber" class="tsd-kind-icon">get<wbr>Random<wbr>Number</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#vector2daddition" class="tsd-kind-icon">vector2DAddition</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#vector2dsubtraction" class="tsd-kind-icon">vector2DSubtraction</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

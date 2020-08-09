@@ -17,6 +17,7 @@
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Game = void 0;
 const api_1 = require("./api/api");
 const loop_1 = require("./loop");
 const input_1 = require("./input/input");
@@ -30,8 +31,8 @@ class Game {
                 width: config.width,
                 height: config.height,
                 scale: config.scale || 1,
-                fullscreen: config.fullscreen
-            }
+                fullscreen: config.fullscreen,
+            },
         });
         // init css properties
         if (config.css === undefined) {
@@ -67,9 +68,9 @@ class Game {
             options: {
                 inputs: {
                     keyboard: config.input.keyboard !== undefined ? config.input.keyboard : true,
-                    mouse: config.input.mouse !== undefined ? config.input.mouse : false
-                }
-            }
+                    mouse: config.input.mouse !== undefined ? config.input.mouse : false,
+                },
+            },
         });
         // init API instance
         this.api = new api_1.API(this.renderer, this.inputs);

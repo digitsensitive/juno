@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Maths = require("../../maths/index");
+const Maths = require("../../lib/maths/index");
 test("initWith3dVectors", () => {
     // init matrix
     let m = new Maths.Matrix3D();
     m.initWith3dVectors([
         new Maths.Vector(0, 1, 2),
         new Maths.Vector(3, 4, 5),
-        new Maths.Vector(6, 7, 8)
+        new Maths.Vector(6, 7, 8),
     ]);
     // evaluate the result
     expect(m.getEntryAt(0, 0)).toBe(0);
@@ -40,7 +40,11 @@ test("getEntries", () => {
     let m = new Maths.Matrix3D();
     m.initWithNumbers(0, 0, 0, 1, 1, 1, 2, 2, 2);
     // evaluate the result
-    expect(m.getEntries()).toMatchObject([[0, 0, 0], [1, 1, 1], [2, 2, 2]]);
+    expect(m.getEntries()).toMatchObject([
+        [0, 0, 0],
+        [1, 1, 1],
+        [2, 2, 2],
+    ]);
 });
 test("getEntryAt", () => {
     // init matrix

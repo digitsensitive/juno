@@ -6,6 +6,7 @@
  * @license      {@link https://github.com/digitsensitive/juno/blob/master/LICENSE.md | MIT License}
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Vector2D = void 0;
 const random_1 = require("../random/random");
 /**
  * A basic euclidean vector (also called geometric or spatial vector) class.

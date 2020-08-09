@@ -25,6 +25,7 @@
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.GameLoop = void 0;
 const eventemitter3_1 = require("eventemitter3");
 const performance_now_1 = require("./polyfills/performance.now");
 class GameLoop extends eventemitter3_1.EventEmitter {

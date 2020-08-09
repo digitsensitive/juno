@@ -1,25 +1,25 @@
 /**
  * @author       Digitsensitive <digit.sensitivee@gmail.com>
  * @copyright    2018 Digitsensitive
- * @description  Juno Core: API functions
+ * @description  Juno Core: Graphics
  *
  * Here you will find the core functions of Juno.
  *
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
 
-import { CanvasRenderer } from "../renderer/canvas-renderer";
+import { CanvasRenderer } from "../renderer/canvas/canvas-renderer";
 import { Input } from "../input/input";
 import {
   ITiledMapJson,
   ILayer,
   ITileset,
-  IObject
+  IObject,
 } from "../../interfaces/tiled-map-json.interface";
 import { IMouse } from "../input/interfaces/mouse.interface";
 import { KEY } from "../input/enums/key.enum";
 
-export class API {
+export class Graphics {
   private palette: string[];
   private images: Map<string, HTMLImageElement> = new Map();
   private mapData: ITiledMapJson[] = [];
@@ -952,10 +952,7 @@ export class API {
   private calculateAlphaHexCode(a: number): string {
     a = Math.round(a * 100) / 100;
     var alpha = Math.round(a * 255);
-    var hex = (alpha + 0x10000)
-      .toString(16)
-      .substr(-2)
-      .toUpperCase();
+    var hex = (alpha + 0x10000).toString(16).substr(-2).toUpperCase();
     return hex;
   }
 }

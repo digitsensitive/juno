@@ -11,6 +11,7 @@ export interface IGameConfig {
   input?: { keyboard?: boolean; mouse?: boolean };
   width?: number;
   height?: number;
+  antialias?: boolean;
   fullscreen?: boolean;
   css?: {
     borderWidth?: string;

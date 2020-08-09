@@ -9,6 +9,7 @@
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.API = void 0;
 const key_enum_1 = require("../input/enums/key.enum");
 class API {
     constructor(cr, inputs) {

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Maths = require("../../maths/index");
+const Maths = require("../../lib/maths/index");
 test("Addition of two 2D Vectors", () => {
     // init vectors
     let v1 = new Maths.Vector2D(2, 2);

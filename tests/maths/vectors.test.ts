@@ -1,4 +1,4 @@
-import * as Maths from "../../maths/index";
+import * as Maths from "../../lib/maths/index";
 
 test("Addition of two 2D Vectors", () => {
   // init vectors

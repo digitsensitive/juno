@@ -1,6 +1,6 @@
 /**
  * @author       Digitsensitive <digit.sensitivee@gmail.com>
- * @copyright    2018-2019 Digitsensitive
+ * @copyright    2018 - 2020 Digitsensitive
  * @description  Juno Core: Canvas Renderer
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */

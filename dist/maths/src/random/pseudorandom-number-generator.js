@@ -6,6 +6,7 @@
  * @license      {@link https://github.com/digitsensitive/juno/blob/master/LICENSE.md | MIT License}
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Random = void 0;
 /**
  * Pseudorandom Number Generator (PRNG) class (Xorshift128+).
  * A shift/rotate-based linear transformation designed by Sebastiano Vigna

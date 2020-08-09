@@ -1,1 +1,0 @@
-export { degreeToRadians } from "./general";

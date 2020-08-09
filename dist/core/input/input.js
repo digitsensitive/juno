@@ -6,6 +6,7 @@
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Input = void 0;
 class Input {
     constructor(cr) {
         this.cr = cr;

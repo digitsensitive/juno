@@ -1,1 +1,0 @@
-export { absNumber } from "./general";

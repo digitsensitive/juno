@@ -1,12 +1,16 @@
 /**
  * @author       Digitsensitive <digit.sensitivee@gmail.com>
- * @copyright    2018-2019 Digitsensitive
+ * @copyright    2018 - 2020 Digitsensitive
  * @description  Juno Core: Canvas Renderer
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
 
 import { ICanvasRenderer } from "./interfaces/canvas-renderer.interface";
 
+/**
+ * The Canvas Renderer is responsible for drawing everything on the canvas
+ * and with that on the screen.
+ */
 export class CanvasRenderer {
   private width: number;
   private height: number;
@@ -16,25 +20,29 @@ export class CanvasRenderer {
 
   constructor(config: ICanvasRenderer) {
     this.canvas = document.createElement("canvas");
-    document.getElementById(config.canvas.name).appendChild(this.canvas);
+
+    document.getElementById(config.name).appendChild(this.canvas);
 
     // Canvas settings
     this.canvas.style.cursor = "none";
 
-    this.width = this.canvas.width = config.canvas.width;
-    this.height = this.canvas.height = config.canvas.height;
+    this.width = this.canvas.width = config.width;
+    this.height = this.canvas.height = config.height;
 
     this.renderer = this.canvas.getContext("2d");
-    this.renderer.imageSmoothingEnabled = false;
-    this.scaleFactor = config.canvas.scale || 1;
+
+    this.renderer.imageSmoothingEnabled = config.antialias;
+
+    console.log(this.renderer.imageSmoothingEnabled);
+    this.scaleFactor = config.scale || 1;
     this.renderer.scale(this.scaleFactor, this.scaleFactor);
 
     this.canvas.width =
-      config.canvas.width * this.scaleFactor || 64 * this.scaleFactor;
+      config.width * this.scaleFactor || 64 * this.scaleFactor;
     this.canvas.height =
-      config.canvas.height * this.scaleFactor || 64 * this.scaleFactor;
+      config.height * this.scaleFactor || 64 * this.scaleFactor;
 
-    if (config.canvas.fullscreen) {
+    if (config.fullscreen) {
       this.canvas.width = window.innerWidth;
       this.canvas.height = window.innerHeight;
     }
@@ -58,7 +66,7 @@ export class CanvasRenderer {
     }
 
     // Render all the children from this container
-    container.getChildren().forEach(child => {
+    container.getChildren().forEach((child) => {
       // save the entire state of the canvas by pushing the current state onto a stack
       this.renderer.save();
 
@@ -68,5 +76,13 @@ export class CanvasRenderer {
       // restore the most recently saved canvas state by popping the top entry in the drawing state stack
       this.renderer.restore();
     });
+  }
+
+  /**
+   * Set the title of the canvas
+   * @param canvasTitle
+   */
+  public setCanvasTitle(canvasTitle: string): void {
+    this.canvas.title = canvasTitle;
   }
 }

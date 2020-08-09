@@ -1,4 +1,4 @@
-import * as Maths from "../../maths/index";
+import * as Maths from "../../lib/maths/index";
 
 test("2D Vector Creation", () => {
   // create an empty 2D Vector

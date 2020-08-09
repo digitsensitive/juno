@@ -5,7 +5,7 @@
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
 
-import { CanvasRenderer } from "../../renderer/canvas-renderer";
+import { CanvasRenderer } from "../../renderer/canvas/canvas-renderer";
 
 export interface IInput {
   renderer: CanvasRenderer;

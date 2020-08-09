@@ -15,6 +15,7 @@
  * @license      {@link https://github.com/digitsensitive/juno-console/blob/master/license.txt|MIT License}
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ElapsedTime = void 0;
 function ElapsedTime() {
     if (window.performance && window.performance.now) {
         return window.performance.now();
